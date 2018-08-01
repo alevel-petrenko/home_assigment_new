@@ -32,8 +32,9 @@ namespace Autos_discount
             {
                 Console.WriteLine("Enter your discount in percent for {0} car", i+1);
                 percent = Console.ReadLine();
-                carPark[i].CalculateDiscount(percent);
-                Console.WriteLine("Initiall price for {0} is {1}. Price with discount is {2} \n", carPark[i].Name, carPark[i].Price, carPark[i].GetDiscount());
+                carPark[i].accessToDiscount(percent);
+                Console.WriteLine("Initiall price for {0} is {1}. Price with discount is {2} \n", 
+                    carPark[i].Name, carPark[i].Price, carPark[i].GetDiscount());
             }
         }
     }

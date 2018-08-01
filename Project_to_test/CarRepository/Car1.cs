@@ -19,21 +19,21 @@ namespace CarRepository
             return _priceWithDiscount;
         }
 
-        public virtual void CalculateDiscount(string sizeOfDiscount)
+        internal void CalculateDiscount(string sizeOfDiscount)
         {
-            //как можно использовать метод internal если CarRepository это другая сборка?
-            if (Double.Parse(sizeOfDiscount) <= 0)
-            {
-                throw new Exception("Invalid discount");
-            }
-            else if (Double.TryParse(sizeOfDiscount, out double result))
+            if (Double.Parse(sizeOfDiscount) > 0 && (Double.TryParse(sizeOfDiscount, out double result)))
             {
                 SetDiscount(result);
             }
-            else if (!Double.TryParse(sizeOfDiscount, out double notDouble))
+            else
             {
                 throw new Exception("Invalid entry");
             }
+        }
+
+        public void accessToDiscount (string size)
+        {
+            CalculateDiscount(size);
         }
     }
 }
