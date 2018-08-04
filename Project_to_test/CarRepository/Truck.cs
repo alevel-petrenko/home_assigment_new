@@ -21,7 +21,7 @@ namespace CarRepository
             Insurance = insurance;
         }
 
-        public override void CalculateDiscount(string empty)
+        public new void accessToDiscount (string empty)
         {
             double price = Double.Parse(Price);            
             price *= 0.7;

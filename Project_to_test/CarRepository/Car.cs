@@ -25,17 +25,15 @@ namespace CarRepository
             set
             { 
                 //положительное значение и не строка
-                if (Double.Parse(value) <= 0)
-                {
-                    throw new Exception("Invalid price");
-                }
-                else if (Double.TryParse(value, out double result))
+                if (Double.Parse(value) > 0 && Double.TryParse(value, out double result))
                 {
                     _price = result;
+
                 }
-                else if (!Double.TryParse(value, out double notDouble))
+                else
                 {
-                    throw new Exception("It's not a number!");
+                    throw new Exception("Invalid price");
+
                 }
             }
             get
@@ -49,11 +47,11 @@ namespace CarRepository
             set
             {
                 //не число и не пустая строка
-                if (!String.IsNullOrWhiteSpace(value))
+                if (!String.IsNullOrWhiteSpace(value) && !Double.TryParse(value, out double a))
                 {
                     _name = value;
                 }
-                else if (Double.TryParse(value, out double a))
+                else
                 {
                     throw new Exception("it's not a string!");
                 }
@@ -69,15 +67,14 @@ namespace CarRepository
             set
             {
                 //не число и не пустая строка
-                if (!String.IsNullOrWhiteSpace(value))
+                if (!String.IsNullOrWhiteSpace(value) && !Double.TryParse(value, out double a))
                 {
                     _color = value;
                 }
-                else if (Double.TryParse(value, out double a))
+                else
                 {
                     throw new Exception("it's not a string!");
                 }
-                
             }
             get
             {
