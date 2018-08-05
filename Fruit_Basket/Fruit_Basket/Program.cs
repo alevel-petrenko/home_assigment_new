@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Fruit_Basket.Classes;
 using Fruit_Basket.Classes.TypesOfPlayers;
 
 namespace Fruit_Basket
@@ -31,18 +32,33 @@ namespace Fruit_Basket
 
         static void Main(string[] args)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Random rndForBasket = new Random();
+            List<Player> allPlayers = new List<Player>();
+
             byte basketWeight = (byte)rndForBasket.Next(40, 140);
             Console.WriteLine($"The real basket weight is {basketWeight}");
 
             Usuall_Player US = new Usuall_Player();
             Player_Notebook PN = new Player_Notebook();
+            Uber_Player UP = new Uber_Player();
+            Cheater_Player CP = new Cheater_Player();
+            Uber_Cheater_Player UCP = new Uber_Cheater_Player();
 
-            for (int i = 0; i < 100; i++)
+            allPlayers.Add(US);
+            allPlayers.Add(PN);
+            allPlayers.Add(UP);
+            allPlayers.Add(CP);
+            allPlayers.Add(UCP);
+
+            for (int i = 0; i < 50; i++)
             {
-                Console.WriteLine(US.ChosenNumber());
-                Console.WriteLine(PN.ChosenNumber()); 
+                foreach (var player in allPlayers)
+                {
+                    BankOfAnswers.bankOfAnswers.Add(player.ChooseNumber());
+                }
             }
+
         }
     }
 }

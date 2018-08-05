@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Fruit_Basket.Classes.TypesOfPlayers
 {
-    class Player_Notebook : Player
+    class Cheater_Player : Player
     {
         Random rndForPlayers = new Random();
-        List<int> allAnswers = new List<int>();
 
         public override int ChooseNumber()
         {
@@ -18,9 +17,9 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
             {
                 nextAnswer = rndForPlayers.Next(40, 140);
             }
-            while (allAnswers.Contains(nextAnswer));
+            while (BankOfAnswers.bankOfAnswers.Contains(nextAnswer));
 
-            Console.Write("Player_Notebook answered: ");
+            Console.Write("Cheater_Player answered: ");
             return nextAnswer;
         }
     }

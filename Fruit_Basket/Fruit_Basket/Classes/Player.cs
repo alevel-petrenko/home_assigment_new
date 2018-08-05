@@ -8,6 +8,11 @@ namespace Fruit_Basket.Classes
 {
     abstract class Player
     {
-        abstract public int ChosenNumber();
+        abstract public int ChooseNumber();
+    }
+
+    static class BankOfAnswers
+    {
+        public static List<int> bankOfAnswers = new List<int>();
     }
 }

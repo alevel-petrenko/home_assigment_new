@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Fruit_Basket.Classes.TypesOfPlayers
 {
-    class Usuall_Player : Player
+    class Uber_Player : Player
     {
-        Random rndForPlayers = new Random();
+        private byte answer = 40;
         public override int ChooseNumber()
         {
-            Console.Write("Usuall_Player answered: ");
-            return rndForPlayers.Next (40,140);
+            Console.WriteLine("Player_Uber answered: ");
+            return answer++;
         }
     }
 }
