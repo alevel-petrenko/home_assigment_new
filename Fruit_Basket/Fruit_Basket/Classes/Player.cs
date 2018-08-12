@@ -8,6 +8,7 @@ namespace Fruit_Basket.Classes
 {
     abstract class Player
     {
+        public string Name { get; set; }
         abstract public int ChooseNumber();
     }
 

@@ -8,6 +8,11 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
 {
     class Cheater_Player : Player
     {
+        public Cheater_Player(string name)
+        {
+            Name = name;
+        }
+
         Random rndForPlayers = new Random();
 
         public override int ChooseNumber()

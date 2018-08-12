@@ -11,6 +11,11 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
         Random rndForPlayers = new Random();
         List<int> allAnswers = new List<int>();
 
+        public Player_Notebook(string name)
+        {
+            Name = name;
+        }
+
         public override int ChooseNumber()
         {
             int nextAnswer;

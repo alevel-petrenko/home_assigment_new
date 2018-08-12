@@ -8,7 +8,12 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
 {
     class Uber_Player : Player
     {
-        private byte answer = 40;
+        public Uber_Player(string name)
+        {
+            Name = name;
+        }
+
+        private int answer = 40;
         public override int ChooseNumber()
         {
             Console.WriteLine("Player_Uber answered: ");
