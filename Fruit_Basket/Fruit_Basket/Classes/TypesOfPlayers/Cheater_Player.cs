@@ -13,18 +13,18 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
             Name = name;
         }
 
-        Random rndForPlayers = new Random();
+        private Random rndForPlayers = new Random();
 
         public override int ChooseNumber()
         {
             int nextAnswer;
             do
             {
-                nextAnswer = rndForPlayers.Next(40, 140);
+                nextAnswer = rndForPlayers.Next(StaticValues.minValue, StaticValues.maxValue);
             }
-            while (BankOfAnswers.bankOfAnswers.Contains(nextAnswer));
+            while (StaticValues.bankOfAnswers.Contains(nextAnswer));
 
-            Console.Write("Cheater_Player answered: ");
+            Console.Write($"Cheater_Player {Name} answered: {nextAnswer}\n");
             return nextAnswer;
         }
     }

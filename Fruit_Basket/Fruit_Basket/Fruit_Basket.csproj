@@ -48,6 +48,7 @@
     <Compile Include="Classes\TypesOfPlayers\Uber_Cheater_Player.cs" />
     <Compile Include="Classes\TypesOfPlayers\Uber_Player.cs" />
     <Compile Include="Classes\TypesOfPlayers\Usuall_Player.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

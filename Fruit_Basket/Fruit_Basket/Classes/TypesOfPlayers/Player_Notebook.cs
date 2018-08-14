@@ -8,8 +8,8 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
 {
     class Player_Notebook : Player
     {
-        Random rndForPlayers = new Random();
-        List<int> allAnswers = new List<int>();
+        private Random rndForPlayers = new Random();
+        private List<int> allAnswers = new List<int>();
 
         public Player_Notebook(string name)
         {
@@ -21,11 +21,11 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
             int nextAnswer;
             do
             {
-                nextAnswer = rndForPlayers.Next(40, 140);
+                nextAnswer = rndForPlayers.Next(StaticValues.minValue, StaticValues.maxValue);
             }
             while (allAnswers.Contains(nextAnswer));
 
-            Console.Write("Player_Notebook answered: ");
+            Console.Write($"Player_Notebook {Name} answered: {nextAnswer}\n");
             return nextAnswer;
         }
     }

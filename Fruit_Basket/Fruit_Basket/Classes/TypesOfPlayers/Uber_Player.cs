@@ -16,8 +16,8 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
         private int answer = 40;
         public override int ChooseNumber()
         {
-            Console.WriteLine("Player_Uber answered: ");
-            return answer++;
+            Console.WriteLine($"Player_Uber {Name} answered: {answer++}\n");
+            return answer;
         }
     }
 }

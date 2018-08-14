@@ -12,8 +12,10 @@ namespace Fruit_Basket.Classes
         abstract public int ChooseNumber();
     }
 
-    static class BankOfAnswers
+    static class StaticValues
     {
         public static List<int> bankOfAnswers = new List<int>();
+        public static readonly int minValue = 40;
+        public static readonly int maxValue = 60;
     }
 }

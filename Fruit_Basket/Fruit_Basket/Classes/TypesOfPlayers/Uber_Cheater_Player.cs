@@ -16,13 +16,13 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
         private int answer = 40;
         public override int ChooseNumber()
         {
-            while (BankOfAnswers.bankOfAnswers.Contains(answer))
+            while (StaticValues.bankOfAnswers.Contains(answer))
             {
                 answer++;
             }
 
-            Console.WriteLine("Uber_Cheater_Player answered: ");
-            return answer++;
+            Console.WriteLine($"Uber_Cheater_Player {Name} answered: {answer}\n");
+            return answer;
         }
     }
 }

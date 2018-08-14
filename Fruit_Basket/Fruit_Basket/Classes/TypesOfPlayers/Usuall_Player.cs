@@ -8,7 +8,7 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
 {
     class Usuall_Player : Player
     {
-        Random rndForPlayers = new Random();
+        private Random rndForPlayers = new Random();
 
         public Usuall_Player(string name)
         {
@@ -17,8 +17,9 @@ namespace Fruit_Basket.Classes.TypesOfPlayers
 
         public override int ChooseNumber()
         {
-            Console.Write("Usuall_Player answered: ");
-            return rndForPlayers.Next (40,140);
+            int choise = rndForPlayers.Next(StaticValues.minValue, StaticValues.maxValue);
+            Console.Write($"Usuall_Player {Name} answered: {choise}\n");
+            return choise;
         }
     }
 }
