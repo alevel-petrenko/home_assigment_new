@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Timer
 {
-    class Refrigerator
+    class AC
     {
         public void TurnOn ()
         {
-            Console.WriteLine("Refrigerator is turning on ...");
+            Console.WriteLine("AC is working");
         }
     }
 }

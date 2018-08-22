@@ -11,9 +11,20 @@ namespace Timer
         static void Main(string[] args)
         {
             Refrigerator refrigerator = new Refrigerator();
-            TimerClass.myTimer myTimer;
+            AC aC = new AC();
+            TimerClass.myTimerDelegate myTimer;
+            TimerClass timerClass = new TimerClass(30);
 
-            myTimer = refrigerator.MessageOnAlarm;
+            myTimer = refrigerator.TurnOn;
+            myTimer += aC.TurnOn;
+
+            timerClass.ShowAlarmTime();
+            timerClass.Counter();
+
+            while (true)
+            {
+                timerClass.ShowCurrentTime();
+            }
         }
     }
 }
