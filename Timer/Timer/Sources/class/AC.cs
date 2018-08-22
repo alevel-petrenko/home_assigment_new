@@ -10,7 +10,9 @@ namespace Timer
     {
         public void TurnOn ()
         {
-            Console.WriteLine("AC is working");
+            Console.SetCursorPosition(5, 3);
+            Console.Write("AC is working");
+
         }
     }
 }

@@ -12,6 +12,10 @@ namespace Timer
         public delegate void myTimerDelegate ();
         public event myTimerDelegate OnAlarm;
 
+        static int seconds = 0;
+        static int minutes = 0;
+        static int hours = 0;
+
         private int _currentTime;
         private int _alarmTime;
 
@@ -28,7 +32,7 @@ namespace Timer
                 do
                 {
                     //Sleep for one second
-                    Thread.Sleep(1000);
+                    Thread.Sleep(300);
                     //And increment our inner counter
                     _currentTime += 1;
 
@@ -47,7 +51,9 @@ namespace Timer
             Console.SetCursorPosition(20, 10);
             Console.Write("Current time is:");
             Console.SetCursorPosition(20, 11);
-            Console.WriteLine(_currentTime);
+            ConvertToClockView();
+            DisplayTime();
+            //Console.SetCursorPosition(0, 0);
         }
 
         public void ShowAlarmTime()
@@ -57,6 +63,43 @@ namespace Timer
             Console.SetCursorPosition(0, 11);
             Console.WriteLine(_alarmTime);
         }
-    }
 
+        private void ConvertToClockView ()
+        {
+            if (_currentTime < 60)
+                seconds = _currentTime;
+            else if (_currentTime >= 60)
+            {            
+                if (_currentTime % 60 >= 1)
+                {
+                    minutes++;
+                }
+                else if (_currentTime % 3600 == 0)
+                {
+                    minutes = 0;
+                    hours++;
+                }
+                seconds = _currentTime - (minutes * 60);
+            }
+        }
+
+        public void DisplayTime ()
+        {
+            string timeFormat = "";
+            if (seconds < 10 && minutes == 0 && hours == 0)
+                timeFormat = $"00:00:0{seconds}";
+            else if(seconds >= 10 && minutes == 0 && hours == 0)
+                timeFormat = $"00:00:{seconds}";
+            else if (seconds < 10 && minutes > 0 && minutes < 10)
+                timeFormat = $"00:0{minutes}:0{seconds}";
+            else if (seconds >= 10 && minutes > 0 && minutes < 10)
+                timeFormat = $"00:0{minutes}:{seconds}";
+            else if (seconds < 10 && minutes >= 10)
+                timeFormat = $"00:{minutes}:0{seconds}";
+            else if (seconds >= 10 && minutes >= 10)
+                timeFormat = $"00:{minutes}:{seconds}";
+
+                Console.WriteLine(timeFormat);
+        }
+    }
 }

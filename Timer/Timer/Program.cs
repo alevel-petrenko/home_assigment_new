@@ -10,13 +10,13 @@ namespace Timer
     {
         static void Main(string[] args)
         {
+            Console.CursorVisible = false;
             Refrigerator refrigerator = new Refrigerator();
             AC aC = new AC();
-            TimerClass.myTimerDelegate myTimer;
-            TimerClass timerClass = new TimerClass(30);
+            TimerClass timerClass = new TimerClass(25);
 
-            myTimer = refrigerator.TurnOn;
-            myTimer += aC.TurnOn;
+            timerClass.OnAlarm += refrigerator.TurnOn;
+            timerClass.OnAlarm += aC.TurnOn;
 
             timerClass.ShowAlarmTime();
             timerClass.Counter();
