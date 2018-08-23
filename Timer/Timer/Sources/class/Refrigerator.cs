@@ -11,8 +11,7 @@ namespace Timer
         public void TurnOn ()
         {
             Console.SetCursorPosition(5, 3);
-            Console.Write("Refrigerator is turning on ...");
-
+            Console.Write("Refrigerator is turning on ...\n");
         }
     }
 }

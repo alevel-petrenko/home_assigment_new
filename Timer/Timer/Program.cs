@@ -13,7 +13,7 @@ namespace Timer
             Console.CursorVisible = false;
             Refrigerator refrigerator = new Refrigerator();
             AC aC = new AC();
-            TimerClass timerClass = new TimerClass(25);
+            TimerClass timerClass = new TimerClass(59);
 
             timerClass.OnAlarm += refrigerator.TurnOn;
             timerClass.OnAlarm += aC.TurnOn;
