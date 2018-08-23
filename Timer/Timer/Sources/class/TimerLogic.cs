@@ -56,6 +56,7 @@ namespace Timer.Sources
 
         public void Converter(int number)
         {
+            //TimeSpan тип данных для вывода секунд, минут
             if (number/60 <= 0)
             {
                 seconds = number;
