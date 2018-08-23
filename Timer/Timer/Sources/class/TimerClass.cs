@@ -43,6 +43,8 @@ namespace Timer
 
         public void SetAlarm(int minutes)
         {
+            //сделать так чтобы можно было докидывать время
+            // _alarmtime = _currenttime + minutes
             _alarmTime = minutes;
         }
 
