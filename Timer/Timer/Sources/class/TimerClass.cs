@@ -19,12 +19,6 @@ namespace Timer
         private int _currentTime;
         private int _alarmTime;
 
-        public TimerClass(int alarmTime)
-        {
-            _currentTime = 0;
-            SetAlarm(alarmTime);
-        }
-
         public void Counter()
         {
             Task.Factory.StartNew(() =>
@@ -41,11 +35,10 @@ namespace Timer
             });
         }
 
-        public void SetAlarm(int minutes)
+        public void SetAlarm(int seconds)
         {
             //сделать так чтобы можно было докидывать время
-            // _alarmtime = _currenttime + minutes
-            _alarmTime = minutes;
+            _alarmTime = _currentTime + seconds;
         }
 
         public void ShowCurrentTime()

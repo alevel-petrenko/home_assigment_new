@@ -13,28 +13,6 @@ namespace Timer.Sources
         private int minutes;
         private int hours;
 
-        //public void ConvertToClockView(int _someTime)
-        //{
-        //    if (_someTime < 60)
-        //        seconds = _someTime;
-        //    else if (_someTime >= 60)
-        //    {
-        //        if (_someTime % 60 == 0)
-        //        {
-        //            minutes++;
-        //            seconds++;
-        //        }
-        //        else if (_someTime % 3600 == 0)
-        //        {
-        //            seconds++;
-        //            minutes = 0;
-        //            hours++;
-        //            seconds = _someTime - hours * 3600;
-        //        }
-        //        seconds = _someTime - minutes * 60;
-        //    }
-        //}
-
         public void DisplayTime()
         {
             string timeFormat = "";
