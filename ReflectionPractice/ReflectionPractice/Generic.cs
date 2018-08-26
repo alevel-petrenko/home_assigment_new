@@ -9,7 +9,9 @@ namespace ReflectionPractice
 {
     class Generic
     {
-        public bool AreSame<T> (T operand1, T operand2) where T : class //class - ref type, struct - value type, new() - instances of classes, Person конкретный персон и его наследники
+        public bool AreSame<T> (T operand1, T operand2) where T : class 
+            // class - ref type, struct - value type, 
+            // new() - instances of classes, Person конкретный персон и его наследники
         {            
             return operand1.Equals(operand2);
         }
@@ -35,8 +37,6 @@ namespace ReflectionPractice
                     }
                 }
             } 
-            
-
         }
     }
 }

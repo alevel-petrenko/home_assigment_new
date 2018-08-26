@@ -9,7 +9,8 @@ namespace ReflectionPractice
 {
     class Program
     {
-        ///рекурсивно зайти в персон и достучаться до CardName, CardNumber и вывести на экран
+        /// рекурсивно зайти в персон и достучаться до CardName, CardNumber и вывести на экран
+        /// выполнено в методе ShowInfo<T>
 
         static void Main(string[] args)
         {
@@ -21,11 +22,12 @@ namespace ReflectionPractice
             Type calcType = calc.GetType();
 
             MethodInfo method = calcType.GetMethod("Add");
-            var param = new object[] { 6, 7 }; //create params that will be passed to method
-            //массив object обязательно
+            var param = new object[] { 6, 7 }; 
+            // create params that will be passed to method
+            // массив object обязательно
 
             Console.WriteLine(method?.Invoke(calc, param));
-            //? проверка на налл
+            //? проверка на null
 
             Person p = new Person()
             {
@@ -47,30 +49,5 @@ namespace ReflectionPractice
                     $"Property Value : {prop.GetValue(p)}");
             }
         }
-    }
-
-    public class Person
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public string Email { get; set; }
-        public BankCardInfo CardInfo { get; set; }
-        [SecureData] //action filter
-        public string Password { get; set; }
-    }
-
-    public class BankCardInfo
-    {
-        [SecureData] //action filter
-        public string Cvv { get; set; }
-        public string Pin { get; set; }
-        public string CardName { get; set; }
-        public string CardNumber { get; set; }
-    }
-
-     public class SecureData : Attribute
-    {
-
     }
 }
