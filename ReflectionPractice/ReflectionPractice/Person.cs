@@ -26,7 +26,6 @@ namespace ReflectionPractice
         public string Pin { get; set; }
         public string CardName { get; set; }
         public string CardNumber { get; set; }
-
     }
 
     public class SecureData : Attribute
