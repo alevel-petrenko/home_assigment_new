@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ReflectionPractice
 {
@@ -16,7 +17,7 @@ namespace ReflectionPractice
             return operand1.Equals(operand2);
         }
 
-        public void ShowInfo<T>(T operand)
+        public void ShowAllInfo<T>(T operand)
         {
             if (operand!=null)
             {
@@ -33,10 +34,39 @@ namespace ReflectionPractice
                     else
                     {
                         var propValue = prop.GetValue(operand, null);
-                        ShowInfo(propValue);
+                        ShowAllInfo(propValue);
                     }
                 }
             } 
+        }
+
+        public List<string> WriteInfoAboutPrimitive<T>(T instance)
+        {
+            List<string> instanceProperties = new List<string>();
+            if (instance != null)
+            {
+                foreach (var prop in instance.GetType().GetProperties())
+                {
+                    instanceProperties.Add(($"*{prop.Name}* = *{prop.GetValue(instance)}*\n"));
+                }
+            }
+            return instanceProperties;
+        }
+
+        public void TransformToText<T>(T instance)
+        {
+            if (File.Exists(@"C:\Temp\file.txt"))
+            {                
+                File.WriteAllLines(@"C:\Temp\file.txt", WriteInfoAboutPrimitive(instance));                
+            }
+            else
+            {
+                foreach (var item in WriteInfoAboutPrimitive(instance))
+                {
+                    File.AppendAllText(@"C:\Temp\file.txt", item);
+                }
+            }
+            Console.WriteLine("file.txt has been successfully rewrited");
         }
     }
 }

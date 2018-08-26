@@ -15,8 +15,7 @@ namespace ReflectionPractice
         static void Main(string[] args)
         {
             Generic gen = new Generic();
-            Console.WriteLine(gen.AreSame<string>("Olya", "Sasha"));
-
+            //Console.WriteLine(gen.AreSame<string>("Olya", "Sasha"));
 
             Calc calc = new Calc();
             Type calcType = calc.GetType();
@@ -25,28 +24,52 @@ namespace ReflectionPractice
             var param = new object[] { 6, 7 }; 
             // create params that will be passed to method
             // массив object обязательно
-
-            Console.WriteLine(method?.Invoke(calc, param));
+            //Console.WriteLine(method?.Invoke(calc, param));
             //? проверка на null
 
-            Person p = new Person()
+            // option to call for the type (typeof)
+            Type type = typeof(Person);
+            //foreach (var item in type.GetMembers() )
+            //{
+            //    Console.WriteLine(item);
+            //}
+
+            Person p1 = new Person()
             {
                 Age = 25,
+                FirstName = "Kolya",
+                LastName = "Turgenev",
                 CardInfo = new BankCardInfo()
                 {
-                    CardName = "Name",
-                    CardNumber = "2233 5566 4488 7788"
+                    CardName = "Mono",
+                    CardNumber = "2233 5566 4488 7788",
+                    Cvv = "987",
+                    Pin = "0000"
                 },
-                Email = "dfdjfo@gmail",
-                FirstName = "Kolya",
-                LastName = "Bomzh"
+                Email = "dfdjfo@gmail.com",                
+                Password = "password1"
             };
 
-            foreach (var prop in p.GetType().GetProperties())
+            Person p2 = new Person()
             {
-                Console.WriteLine($"PropertyName : {prop.Name}," +
-                    $"propertyType : {prop.PropertyType.Name}," +
-                    $"Property Value : {prop.GetValue(p)}");
+                Age = 35,
+                FirstName = "Tamara",
+                LastName = "Lukashina",
+                CardInfo = new BankCardInfo()
+                {
+                    CardName = "Oschad",
+                    CardNumber = "1234 5566 5678 0000",
+                    Cvv = "987",
+                    Pin = "5555"
+                },
+                Email = "tamaraL@gmail.com",
+                Password = "passEASY"
+            };
+
+            List<Person> persons = new List<Person> { p1, p2};
+            foreach (var person in persons)
+            {
+                gen.TransformToText(person);
             }
         }
     }
