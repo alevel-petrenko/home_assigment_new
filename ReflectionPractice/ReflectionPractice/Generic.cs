@@ -47,7 +47,7 @@ namespace ReflectionPractice
             {
                 foreach (var prop in instance.GetType().GetProperties())
                 {
-                    instanceProperties.Add(($"*{prop.Name}* = *{prop.GetValue(instance)}*\n"));
+                    instanceProperties.Add(($"*{prop.Name}* = *{prop.GetValue(instance)}*\r\n"));
                 }
             }
             return instanceProperties;
@@ -55,16 +55,10 @@ namespace ReflectionPractice
 
         public void TransformToText<T>(T instance)
         {
-            if (File.Exists(@"C:\Temp\file.txt"))
-            {                
-                File.WriteAllLines(@"C:\Temp\file.txt", WriteInfoAboutPrimitive(instance));                
-            }
-            else
+            //if (File.Exists(@"C:\Temp\file.txt"))
+            foreach (var item in WriteInfoAboutPrimitive(instance))
             {
-                foreach (var item in WriteInfoAboutPrimitive(instance))
-                {
-                    File.AppendAllText(@"C:\Temp\file.txt", item);
-                }
+                File.AppendAllText(@"C:\Temp\file.txt", item);
             }
             Console.WriteLine("file.txt has been successfully rewrited");
         }
