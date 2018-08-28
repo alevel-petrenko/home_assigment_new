@@ -11,7 +11,7 @@ namespace ReflectionPractice
     static class Generic
     {
         const string path = @"C:\Temp\file.txt";
-        const string symbol = "\r\n";
+
         /// <summary>
         /// Compare two operands on equality
         /// </summary>
