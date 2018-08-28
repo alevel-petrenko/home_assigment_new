@@ -8,16 +8,28 @@ using System.IO;
 
 namespace ReflectionPractice
 {
-    class Generic
+    static class Generic
     {
-        public bool AreSame<T> (T operand1, T operand2) where T : class 
+        /// <summary>
+        /// Compare two operands on equality
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="operand1"></param>
+        /// <param name="operand2"></param>
+        /// <returns></returns>
+        static public bool AreSame<T> (T operand1, T operand2) where T : class 
             // class - ref type, struct - value type, 
             // new() - instances of classes, Person конкретный персон и его наследники
         {            
             return operand1.Equals(operand2);
         }
 
-        public void ShowAllInfo<T>(T operand)
+        /// <summary>
+        /// Show all Properties by Reflection
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="operand"></param>
+        static public void ShowAllInfo<T>(T operand)
         {
             if (operand!=null)
             {
@@ -40,7 +52,13 @@ namespace ReflectionPractice
             } 
         }
 
-        public List<string> WriteInfoAboutPrimitive<T>(T instance)
+        /// <summary>
+        /// Collect all members from instance and add them to List
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        /// <returns></returns>
+        static public List<string> WriteInfoAboutPrimitive<T>(T instance)
         {
             List<string> instanceProperties = new List<string>();
             if (instance != null)
@@ -53,14 +71,21 @@ namespace ReflectionPractice
             return instanceProperties;
         }
 
-        public void TransformToText<T>(T instance)
+        /// <summary>
+        /// Transforms List with instance members to text file
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        static public void TransformToText<T>(T instance)
         {
-            //if (File.Exists(@"C:\Temp\file.txt"))
             foreach (var item in WriteInfoAboutPrimitive(instance))
             {
                 File.AppendAllText(@"C:\Temp\file.txt", item);
             }
             Console.WriteLine("file.txt has been successfully rewrited");
         }
+
+        //want to use
+        //StreamWriter writer = new StreamWriter(string path, bool choise);
     }
 }

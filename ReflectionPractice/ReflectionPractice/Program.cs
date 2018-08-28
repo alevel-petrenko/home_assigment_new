@@ -14,12 +14,8 @@ namespace ReflectionPractice
 
         static void Main(string[] args)
         {
-            Generic gen = new Generic();
-            //Console.WriteLine(gen.AreSame<string>("Olya", "Sasha"));
-
             Calc calc = new Calc();
             Type calcType = calc.GetType();
-
             MethodInfo method = calcType.GetMethod("Add");
             var param = new object[] { 6, 7 }; 
             // create params that will be passed to method
@@ -28,7 +24,7 @@ namespace ReflectionPractice
             //? проверка на null
 
             // option to call for the type (typeof)
-            Type type = typeof(Person);
+            //Type type = typeof(Person);
             //foreach (var item in type.GetMembers() )
             //{
             //    Console.WriteLine(item);
@@ -69,7 +65,7 @@ namespace ReflectionPractice
             List<Person> persons = new List<Person> { p1, p2};
             foreach (var person in persons)
             {
-                gen.TransformToText(person);
+                Generic.TransformToText<Person>(person);
             }
         }
     }
