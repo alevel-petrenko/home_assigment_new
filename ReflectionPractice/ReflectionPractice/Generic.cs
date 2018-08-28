@@ -10,6 +10,8 @@ namespace ReflectionPractice
 {
     static class Generic
     {
+        const string path = @"C:\Temp\file.txt";
+        const string symbol = "\r\n";
         /// <summary>
         /// Compare two operands on equality
         /// </summary>
@@ -18,8 +20,7 @@ namespace ReflectionPractice
         /// <param name="operand2"></param>
         /// <returns></returns>
         static public bool AreSame<T> (T operand1, T operand2) where T : class 
-            // class - ref type, struct - value type, 
-            // new() - instances of classes, Person конкретный персон и его наследники
+            // class - ref type, struct - value type, new() - instances of classes, Person конкретный персон и его наследники
         {            
             return operand1.Equals(operand2);
         }
@@ -53,39 +54,37 @@ namespace ReflectionPractice
         }
 
         /// <summary>
-        /// Collect all members from instance and add them to List
+        /// Collect all properties from instance and add them to StringBuilder
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="instance"></param>
         /// <returns></returns>
-        static public List<string> WriteInfoAboutPrimitive<T>(T instance)
+        static public string WriteInfoAboutPrimitive<T>(T instance)
         {
-            List<string> instanceProperties = new List<string>();
+            StringBuilder stringBuilder = new StringBuilder();
             if (instance != null)
             {
+                stringBuilder.Append('[');
                 foreach (var prop in instance.GetType().GetProperties())
                 {
-                    instanceProperties.Add(($"*{prop.Name}* = *{prop.GetValue(instance)}*\r\n"));
+                    stringBuilder.AppendLine($"{prop.PropertyType} *{prop.Name}* = *{prop.GetValue(instance)}*");
                 }
+                stringBuilder.AppendLine("]");
             }
-            return instanceProperties;
+            return stringBuilder.ToString();
         }
 
         /// <summary>
-        /// Transforms List with instance members to text file
+        /// Transforms collection with instance members to text file
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="instance"></param>
         static public void TransformToText<T>(T instance)
         {
-            foreach (var item in WriteInfoAboutPrimitive(instance))
-            {
-                File.AppendAllText(@"C:\Temp\file.txt", item);
-            }
+            StreamWriter writer = new StreamWriter(path, true);
+            writer.WriteAsync(WriteInfoAboutPrimitive(instance));
             Console.WriteLine("file.txt has been successfully rewrited");
+            writer.Close();
         }
-
-        //want to use
-        //StreamWriter writer = new StreamWriter(string path, bool choise);
     }
 }

@@ -20,7 +20,7 @@ namespace ReflectionPractice
             var param = new object[] { 6, 7 }; 
             // create params that will be passed to method
             // массив object обязательно
-            //Console.WriteLine(method?.Invoke(calc, param));
+            // Console.WriteLine(method?.Invoke(calc, param));
             //? проверка на null
 
             // option to call for the type (typeof)
@@ -62,7 +62,7 @@ namespace ReflectionPractice
                 Password = "passEASY"
             };
 
-            List<Person> persons = new List<Person> { p1, p2};
+            List<Person> persons = new List<Person> { p1, p2 };
             foreach (var person in persons)
             {
                 Generic.TransformToText<Person>(person);
