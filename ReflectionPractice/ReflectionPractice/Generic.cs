@@ -11,7 +11,8 @@ namespace ReflectionPractice
     static class Generic
     {
         const string path = @"C:\Temp\file.txt";
-
+        const string pathForInstance = @"C:\Temp\file for instances.txt";
+        const char delimiter = ']';
         /// <summary>
         /// Compare two operands on equality
         /// </summary>
@@ -67,7 +68,7 @@ namespace ReflectionPractice
                 stringBuilder.Append('[');
                 foreach (var prop in instance.GetType().GetProperties())
                 {
-                    stringBuilder.AppendLine($"{prop.PropertyType} *{prop.Name}* = *{prop.GetValue(instance)}*");
+                    stringBuilder.AppendLine($"*{prop.PropertyType.Name}* *{prop.Name}* = *{prop.GetValue(instance)}*");
                 }
                 stringBuilder.AppendLine("]");
             }
@@ -85,6 +86,80 @@ namespace ReflectionPractice
             writer.WriteAsync(WriteInfoAboutPrimitive(instance));
             Console.WriteLine("file.txt has been successfully rewrited");
             writer.Close();
+        }
+
+        /// <summary>
+        /// Method returns instances with all props in 1 string
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        static public string [] GetInstances (string allReadText)
+        {
+            string[] fieldsForInstances = null;
+            if (allReadText.Contains("]"))
+            {
+                fieldsForInstances = new string[(allReadText.Split(']')).Count<string>()];
+                fieldsForInstances = allReadText.Split(']');
+            }      
+            return fieldsForInstances;
+        }
+
+        /// <summary>
+        /// Method returns properties for new instances
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        static public List<string> GetProperties(string[] allInstances)
+        {
+            List<string> values = new List<string>();
+            foreach (var instance in allInstances)
+            {
+                instance.Replace('[', ' ');
+                instance.Replace('=', ' ');
+                instance.Replace("\r\n", " ");
+
+                foreach (var item in instance.Split('*'))
+                {
+                    values.Add(item);
+                }
+            }
+            return values;
+        }
+
+        /// <summary>
+        /// Transforms entries from file to instance with properties
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="instance"></param>
+        static public Person CreateInstanceFromFile ()
+        {
+            Person newPerson = new Person();
+            StreamReader reader = new StreamReader(pathForInstance, true);
+            string [] personsInstances = GetInstances(reader.ReadToEnd());
+            List<string> valuesForPersons = GetProperties(personsInstances);
+
+            foreach (var property in newPerson.GetType().GetProperties())
+            {
+                for (var i = 0; i < valuesForPersons.Count; i += 3)
+                {
+                    if (property.PropertyType.Name == valuesForPersons[i] && property.Name == valuesForPersons[i + 1])
+                    {
+                        if (property.PropertyType.Name == "Int32")
+                        {
+                            property.SetValue(newPerson, Convert.ToInt32(valuesForPersons[i + 2]));
+                        }
+                        else if (property.PropertyType.Name == "CardInfo")
+                        {
+
+                        }
+                        else
+                        {
+                            property.SetValue(newPerson, valuesForPersons.ElementAt(i + 2));
+                        }
+                    }
+                }
+            }
+            return newPerson;
         }
     }
 }

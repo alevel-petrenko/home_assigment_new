@@ -16,8 +16,8 @@ namespace ReflectionPractice
         {
             Calc calc = new Calc();
             Type calcType = calc.GetType();
-            MethodInfo method = calcType.GetMethod("Add");
-            var param = new object[] { 6, 7 }; 
+            //MethodInfo method = calcType.GetMethod("Add");
+            //var param = new object[] { 6, 7 }; 
             // create params that will be passed to method
             // массив object обязательно
             // Console.WriteLine(method?.Invoke(calc, param));
@@ -61,11 +61,17 @@ namespace ReflectionPractice
                 Email = "tamaraL@gmail.com",
                 Password = "passEASY"
             };
+            Generic.ShowAllInfo(p1);
 
             List<Person> persons = new List<Person> { p1, p2 };
             foreach (var person in persons)
             {
                 Generic.TransformToText<Person>(person);
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                Generic.CreateInstanceFromFile();
             }
         }
     }
