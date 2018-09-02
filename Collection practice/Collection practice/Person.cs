@@ -30,9 +30,9 @@ namespace Collection_practice
             return listPerson;
         }
 
-        public static ICollection GetPersonsHashtable(long number)
+        public static T GetPersonsHashtable <T>(long number) where T: Hashtable , new()
         {
-            Hashtable ht = new Hashtable();
+            T ht = new T();
             for (long i = 0; i < number; i++)
             {
                 ht.Add(i, Convert.ToString(i * mod));
@@ -50,13 +50,24 @@ namespace Collection_practice
             return keyValues;
         }
 
-        public static T GetPersonsCollection<T>(long count) where T : ICollection<Person>, new()
+        public static T GetPersonsGenCollection<T>(long count) where T : ICollection<Person>, new()
         {
             T response = new T();
 
             for (long i = 0; i < count; i++)
             {
                 response.Add(new Person(i));
+            }
+            return response;
+        }
+
+        public static T GetPersonsCollection<T>(long count) where T : Stack<Person>, new()
+        {
+            T response = new T();
+
+            for (long i = 0; i < count; i++)
+            {
+                response.Push(new Person(i));
             }
             return response;
         }

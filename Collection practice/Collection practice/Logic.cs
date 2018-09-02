@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -17,26 +18,54 @@ namespace Collection_practice
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            Console.WriteLine("Started");
+            Console.WriteLine("____________________");
             Console.WriteLine(persons.GetType().Name);
             Console.WriteLine(persons.Where(a => a._Id%2 == 0).Count());
             Console.WriteLine(persons.FirstOrDefault(b => b._internalNumber=="9999")._Id);
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
-            Console.WriteLine("Finished\n");
+            Console.WriteLine("____________________");
+        }
+
+        static public void CalculateTimeForAction(Stack<Person> persons)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            Console.WriteLine("____________________");
+            Console.WriteLine(persons.GetType().Name);
+            Console.WriteLine(persons.Where(a => a._Id % 2 == 0).Count());
+            Console.WriteLine(persons.FirstOrDefault(b => b._internalNumber == "9999")._Id);
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
+            Console.WriteLine("____________________");
+        }
+
+        static public void CalculateTimeForAction(Hashtable persons)
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            Console.WriteLine("____________________");
+            Console.WriteLine(persons.GetType().Name);
+            //Console.WriteLine(persons.(a => a._Id % 2 == 0).Count());
+            //calculate
+            //Console.WriteLine(persons.FirstOrDefault(b => b._internalNumber == "9999")._Id);
+            //calculate
+            sw.Stop();
+            Console.WriteLine(sw.Elapsed);
+            Console.WriteLine("____________________");
         }
 
         static public void CalculateTimeForAction (IDictionary<long, string> keyValuePairs)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            Console.WriteLine("Started");
+            Console.WriteLine("____________________");
             Console.WriteLine(keyValuePairs.GetType().Name);
             Console.WriteLine(keyValuePairs.Where(a => a.Key % 2 == 0).Count());
             Console.WriteLine(keyValuePairs.FirstOrDefault(b => b.Value == "9999").Key);
             sw.Stop();
             Console.WriteLine(sw.Elapsed);
-            Console.WriteLine("Finished\n");
+            Console.WriteLine("____________________");
         }
     }
 }
