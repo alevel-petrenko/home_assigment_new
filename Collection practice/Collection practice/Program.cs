@@ -23,6 +23,9 @@ namespace Collection_practice
             // Hashtable
             Hashtable hashTablePersons = new Hashtable();
 
+            // Linkedlist
+            LinkedList<Person> linkedListPersons = Person.GetPersonsCollection<LinkedList<Person>>(5000000);
+            Logic.CalculateTimeForAction(linkedListPersons);
         }
     }
 }
