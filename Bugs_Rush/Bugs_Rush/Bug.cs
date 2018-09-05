@@ -9,44 +9,31 @@ namespace Bugs_Rush
 {
     class Bug
     {
-        public static object obj = new object();
-        private int _xPos;
-        private int _yPos;
+        public int VerticalPos { get; set; }
+        public int HorizontPos { get; set; } = Logic.xPosition;
         private readonly char _symbol;
-        private Random rnd = new Random();
 
-        public Bug(char symbol, int x, int y)
+        public Bug(char symbol, int x)
         {
             _symbol = symbol;
-            _xPos = x;
-            _yPos = y;
+            VerticalPos = x;
         }
 
-        public void Move()
+        public void Move ()
         {
-            int i = 0;
-            while (i<10)
-            {
-                Thread.Sleep(rnd.Next(500, 1000));
-                Step();
-                lock (obj)
-                {
-                    Console.SetCursorPosition(_yPos, _xPos);
-                    Console.Write(_symbol);
-                    ClearPrint();
-                }
-            }
-            i++;
+            Console.SetCursorPosition(HorizontPos, VerticalPos);
+            Console.Write(_symbol);
+            MakeStep();
         }
 
-        private void Step ()
+        private void MakeStep()
         {
-            _yPos++;
+            HorizontPos++;
         }
 
-        private void ClearPrint ()
+        public void ClearTail ()
         {
-            Console.SetCursorPosition(_yPos - 1, _xPos);
+            Console.SetCursorPosition(HorizontPos - 1, VerticalPos);
             Console.Write(" ");
         }
     }
