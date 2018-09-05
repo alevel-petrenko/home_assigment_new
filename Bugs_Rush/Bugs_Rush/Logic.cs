@@ -12,6 +12,7 @@ namespace Bugs_Rush
         private Random rnd = new Random();
         public static object locker = new object();
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+        static char winner;
 
         public void Start()
         {
@@ -70,6 +71,7 @@ namespace Bugs_Rush
             }
             else if (instance.HorizontPos == amountOfSteps + xPosition)
             {
+                winner = instance._symbol;
                 cancellationTokenSource.Cancel();
             }
         }

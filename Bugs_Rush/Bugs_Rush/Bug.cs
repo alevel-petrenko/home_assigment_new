@@ -11,7 +11,7 @@ namespace Bugs_Rush
     {
         public int VerticalPos { get; set; }
         public int HorizontPos { get; set; } = Logic.xPosition;
-        private readonly char _symbol;
+        public char _symbol;
 
         public Bug(char symbol, int x)
         {
