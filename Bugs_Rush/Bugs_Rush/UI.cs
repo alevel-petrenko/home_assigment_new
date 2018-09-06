@@ -6,9 +6,15 @@ using System.Threading.Tasks;
 
 namespace Bugs_Rush
 {
-    static class UI
+    class UI
     {
-        static public void FinishLine ()
+        public void Start()
+        {
+            FinishLine();
+            Summary();
+        }
+
+        private void FinishLine ()
         {
             for (int i = 0; i < 8; i++)
             {
@@ -19,12 +25,12 @@ namespace Bugs_Rush
             }
         }
 
-        static public void Summary ()
+        private void Summary ()
         {
-            Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 0);
+            Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 1);
             Console.Write("Rush of Cockroaches");
             Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 3);
-            Console.Write("The winner is {}");
+            Console.Write($"The winner is {Logic.winner}");
         }
     }
 }

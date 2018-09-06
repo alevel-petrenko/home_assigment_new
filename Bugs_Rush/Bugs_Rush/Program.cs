@@ -13,7 +13,11 @@ namespace Bugs_Rush
         {
             Console.CursorVisible = false;
             Logic logic = new Logic();
+            UI uI = new UI();
             logic.Start();
+            uI.Start();
+
+            //Thread.CurrentThread.Join();
 
             Console.ReadLine();
         }

@@ -21,9 +21,15 @@ namespace Bugs_Rush
 
         public void Move ()
         {
+            DrawBug();
+            ClearTail();
+            MakeStep();
+        }
+
+        private void DrawBug ()
+        {
             Console.SetCursorPosition(HorizontPos, VerticalPos);
             Console.Write(_symbol);
-            MakeStep();
         }
 
         private void MakeStep()
@@ -31,7 +37,7 @@ namespace Bugs_Rush
             HorizontPos++;
         }
 
-        public void ClearTail ()
+        private void ClearTail()
         {
             Console.SetCursorPosition(HorizontPos - 1, VerticalPos);
             Console.Write(" ");
