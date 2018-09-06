@@ -7,19 +7,16 @@ namespace Bugs_Rush
 {
     class Logic
     {
-        //public delegate void GetSummury ();
-        //public event GetSummury WinnerIsFound;
-
         public static int xPosition = 2;
         public static int amountOfSteps = 10;
         private Random rnd = new Random();
         public static object locker = new object();
         CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
-        public static char winner;
+        //public static char winner;
 
         public void Start()
         {
-            Task t1 = new Task(() =>
+            Task t1 = Task.Run(() =>
             {
                 Bug bug1 = new Bug('&', 1);
                 while (true)
@@ -28,7 +25,6 @@ namespace Bugs_Rush
                     Movement<Bug>(bug1);
                 }
             }, cancellationTokenSource.Token);
-            t1.Start();
 
             Task t2 = Task.Run(() =>
             {
@@ -73,7 +69,7 @@ namespace Bugs_Rush
             }
             else if (instance.HorizontPos == amountOfSteps + xPosition)
             {
-                winner = instance._symbol;
+                //winner = instance._symbol;
                 cancellationTokenSource.Cancel();
             }
         }

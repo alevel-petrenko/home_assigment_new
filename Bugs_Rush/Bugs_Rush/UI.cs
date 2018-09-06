@@ -16,7 +16,7 @@ namespace Bugs_Rush
 
         private void FinishLine ()
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 9; i++)
             {
                 {
                     Console.SetCursorPosition(Logic.xPosition+Logic.amountOfSteps-1, i);
@@ -29,8 +29,8 @@ namespace Bugs_Rush
         {
             Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 1);
             Console.Write("Rush of Cockroaches");
-            Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 3);
-            Console.Write($"The winner is {Logic.winner}");
+            //Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 3);
+            //Console.Write($"The winner is {Logic.winner}");
         }
     }
 }
