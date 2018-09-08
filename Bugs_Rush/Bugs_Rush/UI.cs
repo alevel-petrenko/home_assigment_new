@@ -16,21 +16,27 @@ namespace Bugs_Rush
 
         private void FinishLine ()
         {
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             for (int i = 0; i < 9; i++)
             {
                 {
-                    Console.SetCursorPosition(Logic.xPosition+Logic.amountOfSteps-1, i);
+                    Console.SetCursorPosition(Logic.XPositionStart+Logic.AmountOfSteps-1, i);
                     Console.Write('|');
                 }
             }
+            Console.ResetColor();
         }
 
-        private void Summary ()
+        private void Summary()
         {
-            Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 1);
+            Console.SetCursorPosition(Logic.XPositionStart + Logic.AmountOfSteps + 5, 1);
             Console.Write("Rush of Cockroaches");
-            //Console.SetCursorPosition(Logic.xPosition + Logic.amountOfSteps + 5, 3);
-            //Console.Write($"The winner is {Logic.winner}");
+        }
+        
+        public void Winner (char winner)
+        {
+            Console.SetCursorPosition(Logic.XPositionStart + Logic.AmountOfSteps + 5, 3);
+            Console.Write($"The winner is {winner}");
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Bugs_Rush
     class Bug
     {
         public int VerticalPos { get; set; }
-        public int HorizontPos { get; set; } = Logic.xPosition;
+        public int HorizontPos { get; set; } = Logic.XPositionStart;
         public char _symbol;
 
         public Bug(char symbol, int x)

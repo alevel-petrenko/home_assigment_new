@@ -16,9 +16,6 @@ namespace Bugs_Rush
             UI uI = new UI();
             logic.Start();
             uI.Start();
-
-            //Thread.CurrentThread.Join();
-
             Console.ReadLine();
         }
     }
