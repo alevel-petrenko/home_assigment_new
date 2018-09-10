@@ -19,7 +19,7 @@ namespace Bugs_Rush
         public void Start()
         {
             int _counterForXLoc = 1;
-            char[] arrayOfSymbols = new char[4] { 'O', 'Ж', '%', '$' };
+            char[] arrayOfSymbols = { 'O', 'Ж', '%', '$' };
 
             for (int i = 0; i < _amountOfCockroaches; i++)
             {
