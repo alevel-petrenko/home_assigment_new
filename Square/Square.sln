@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2019
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square", "Square\Square.csproj", "{82F30DDB-9268-4A8C-91C9-642B5E157CEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Square_Logic", "Square_Logic\Square_Logic.csproj", "{128E5A5C-22DB-4E41-BCFA-FE7CDDE43100}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82F30DDB-9268-4A8C-91C9-642B5E157CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F30DDB-9268-4A8C-91C9-642B5E157CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F30DDB-9268-4A8C-91C9-642B5E157CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F30DDB-9268-4A8C-91C9-642B5E157CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128E5A5C-22DB-4E41-BCFA-FE7CDDE43100}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128E5A5C-22DB-4E41-BCFA-FE7CDDE43100}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128E5A5C-22DB-4E41-BCFA-FE7CDDE43100}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128E5A5C-22DB-4E41-BCFA-FE7CDDE43100}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D53E3359-186C-4F73-B039-423650E6ADA4}
+	EndGlobalSection
+EndGlobal

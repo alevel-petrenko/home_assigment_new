@@ -1,0 +1,53 @@
+﻿@model Square_Logic.Models.Inputs
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Decision"))
+{
+    <table>
+        <tr>
+            <td>
+                A:
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.A)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                B:
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.B)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                C:
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.C)
+            </td>
+        </tr>
+    </table>
+    <br />
+    <input type="submit" value="Calculate" />
+
+}
+@if (Model != null && Model.X != null)
+{
+    foreach (var x in Model.X)
+    {
+        <p> @x</p>
+    }
+}
+<br />
+<br />
+<input type="text" name=" A" />x<sup>2</sup> +
+<input type="text" name=" B" />x +
+<input type="text" name=" C" /> = 0
+
+
