@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Buy</title>
+</head>
+<body>
+    <div> 
+        <h3>Proceed to purchase</h3>
+        <br/>
+        <form method="post" action="">
+            <input type="hidden" name="PhoneID"value=" @ViewBag.Id"/>
+
+            <table>
+                <tbody>
+                    <tr>
+                        <td>FIO</td>
+                        <td><input type="text" name="FIO" /> </td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="Email" /></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><input type="text" name="Address" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"> <input type="submit" value="Proceed" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
