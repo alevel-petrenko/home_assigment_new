@@ -1,0 +1,22 @@
+﻿@model Logic.Models.Contact
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Contact</h2>
+
+@using (Html.BeginForm("Add", "Contact"))
+{
+<table>
+    <tr>
+        <td>Email:</td>
+        <td>@Html.TextBoxFor(m => m.Email)</td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td>@Html.TextBoxFor(m => m.Name)</td>
+    </tr>
+</table>
+    <input type="submit" value="Add" />
+}
