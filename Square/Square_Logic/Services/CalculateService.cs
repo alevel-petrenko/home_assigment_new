@@ -12,8 +12,6 @@ namespace Square_Logic.Services
         void Calculate(Inputs model);
     }
 
-    //сделать дома правильную реализацию CalculateService
-
     public class CalculateServiceMoke : ICalculateService
     {
         public void Calculate(Inputs model)
@@ -22,6 +20,47 @@ namespace Square_Logic.Services
             {
                 5, -5 //Mocked
             };
+        }
+    }
+
+    public class CalculateEquation : ICalculateService
+    {
+        public void Calculate(Inputs model)
+        {
+            double discriminant = FindDiscriminant(model);
+            if (discriminant == 0)
+            {
+                model.X = new List<double>
+                {
+                    FindFirstAnswer(model)
+                };
+                // Add or new List<>?
+            }
+            if (discriminant > 0)
+            {
+                model.X = new List<double>
+                {
+                    FindFirstAnswer(model),
+                    FindSecondAnswer(model)
+                };
+            }
+            else
+                model.X = new List<double>();
+        }
+
+        private double FindDiscriminant(Inputs model)
+        {
+            return (model.B) * (model.B) - 4 * model.A * model.C;
+        }
+
+        private double FindFirstAnswer(Inputs model)
+        {
+            double temp = ((-model.B + Math.Sqrt(FindDiscriminant(model)))) / (2 * model.A);
+            return temp;
+        }
+        private double FindSecondAnswer(Inputs model)
+        {
+            return ((-model.B - Math.Sqrt(FindDiscriminant(model))))/ (2 * model.A);
         }
     }
 }
