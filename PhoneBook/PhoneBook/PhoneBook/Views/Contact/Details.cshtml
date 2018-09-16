@@ -1,0 +1,29 @@
+﻿@model Logic.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<table>
+    <tr>
+        <td>
+            Phone type
+        </td>
+        <td>
+            Phone number
+        </td>
+    </tr>
+    @foreach (var phone in Model.Phones)
+    {
+        <tr>
+            <td>
+                @phone.Type
+            </td>
+            <td>
+                @phone.Number
+            </td>
+        </tr>
+    }
+</table>

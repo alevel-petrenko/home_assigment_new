@@ -30,7 +30,14 @@ namespace PhoneBook.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
         public ActionResult Update(int id)
+        {
+            var contact = ContactServices.Get(id);
+            return View(contact);
+        }
+
+        public ActionResult Details(int id)
         {
             var contact = ContactServices.Get(id);
             return View(contact);

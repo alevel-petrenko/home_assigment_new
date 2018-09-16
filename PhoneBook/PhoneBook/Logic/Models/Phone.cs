@@ -8,8 +8,15 @@ namespace Logic.Models
 {
     public class Phone
     {
-        public int Type { get; set; }  //1 home, 2 mobile, 3 work
+        public PhoneTypes Type { get; set; }  //1 home, 2 mobile, 3 work
 
         public string Number { get; set; }
+    }
+
+    public enum PhoneTypes
+    {
+        Home=1,
+        Mobile,
+        Work
     }
 }

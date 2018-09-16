@@ -20,8 +20,43 @@ namespace Logic.Services
                 {
                     new Phone
                     {
-                        Type = 1,
-                        Number = "09987654321"
+                        Type = PhoneTypes.Mobile,
+                        Number = "0998765432"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Home,
+                        Number = "0678760000"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Work,
+                        Number = "321456789"
+                    }
+                }
+            },
+
+            new Contact ()
+            {
+                Name = "Mary Jane",
+                Id = 2,
+                Email = "jane@gmail.com",
+                Phones = new List<Phone>
+                {
+                    new Phone
+                    {
+                        Type = PhoneTypes.Mobile,
+                        Number = "03728761112"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Home,
+                        Number = "0967160022"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Work,
+                        Number = "07891156789"
                     }
                 }
             }
@@ -35,6 +70,7 @@ namespace Logic.Services
 
             return contact.Id;
         }
+
         public static void Delete(int id)
         {
             var contact = Get(id);
@@ -43,10 +79,12 @@ namespace Logic.Services
                 _contacts.Remove(contact);
             }
         }
+
         public static Contact Get(int id)
         {
             return _contacts.FirstOrDefault(x => x.Id == id);
         }
+
         public static List<Contact> GetAll()
         {
             return _contacts.OrderBy(x => x.Name).ToList();
