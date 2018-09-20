@@ -8,6 +8,8 @@ namespace Logic.Models
 {
     public class Phone
     {
+        public int Id { get; set; }
+
         public PhoneTypes Type { get; set; }  //1 home, 2 mobile, 3 work
 
         public string Number { get; set; }

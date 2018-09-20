@@ -20,16 +20,19 @@ namespace Logic.Services
                 {
                     new Phone
                     {
+                        Id =1,
                         Type = PhoneTypes.Mobile,
                         Number = "0998765432"
                     },
                     new Phone
                     {
+                        Id =2,
                         Type = PhoneTypes.Home,
                         Number = "0678760000"
                     },
                     new Phone
                     {
+                        Id =3,
                         Type = PhoneTypes.Work,
                         Number = "321456789"
                     }
@@ -101,7 +104,36 @@ namespace Logic.Services
 
         private static int GetMax()
         {
-            return _contacts.Max(x => x.Id) + 1;
+            const int seed = 1;
+
+            return _contacts.Any()
+                        ? _contacts.Max(x => x.Id) + seed
+                        : seed;
+        }
+
+        private static List<Phone> GetMockedPhones()
+        {
+            return new List<Phone>
+            {
+                new Phone
+                {
+                    Id =1,
+                    Number= "09999999999",
+                    Type = (PhoneTypes) 1
+                },
+                new Phone
+                {
+                    Id =2,
+                    Number= "0888888888",
+                    Type = (PhoneTypes) 2
+                },
+                new Phone
+                {
+                    Id =3,
+                    Number= "0777777777",
+                    Type = (PhoneTypes) 3
+                },
+            };
         }
     }
 }

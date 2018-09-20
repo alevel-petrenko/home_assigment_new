@@ -149,6 +149,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhonesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -195,10 +196,16 @@
     <Content Include="Views\Contact\Add.cshtml" />
     <Content Include="Views\Contact\Update.cshtml" />
     <Content Include="Views\Contact\Details.cshtml" />
+    <Content Include="Views\Contact\Partials\ContactDetails.cshtml" />
+    <Content Include="Views\Contact\ContactPhones.cshtml" />
+    <Content Include="Views\Contact\Partials\Phones.cshtml" />
+    <Content Include="Views\Phones\Create.cshtml" />
+    <Content Include="Views\Phones\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\Phones\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

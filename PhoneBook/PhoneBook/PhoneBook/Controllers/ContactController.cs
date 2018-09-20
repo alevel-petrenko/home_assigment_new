@@ -26,8 +26,15 @@ namespace PhoneBook.Controllers
         [HttpPost]
         public ActionResult Add(Contact model)
         {
-            ContactServices.Create(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                ContactServices.Create(model);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [HttpGet]
@@ -37,7 +44,27 @@ namespace PhoneBook.Controllers
             return View(contact);
         }
 
+        [HttpPost]
+        public ActionResult Update(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
+                ContactServices.Update(contact);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(contact);
+            }
+        }
+
         public ActionResult Details(int id)
+        {
+            var contact = ContactServices.Get(id);
+            return View(contact);
+        }
+
+        public ActionResult ContactPhones (int id)
         {
             var contact = ContactServices.Get(id);
             return View(contact);
