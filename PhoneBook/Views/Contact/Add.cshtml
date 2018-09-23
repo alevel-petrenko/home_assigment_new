@@ -1,0 +1,14 @@
+﻿@model Logic.Models.Contact
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Contact</h2>
+
+@using (Html.BeginForm("Add", "Contact"))
+{
+        Html.RenderPartial("Partials/ContactDetails", Model);
+    <hr />
+    <input type="submit" value="Add" />
+}

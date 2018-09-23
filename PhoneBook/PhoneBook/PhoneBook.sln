@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook", "PhoneBook\Phon
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logic", "Logic\Logic.csproj", "{44130910-BB6F-4D35-8DD8-23268B620BF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneBook.API", "PhoneBook.API\PhoneBook.API.csproj", "{27906AD3-D504-40CA-B71A-AFF79A7F5C64}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{44130910-BB6F-4D35-8DD8-23268B620BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{44130910-BB6F-4D35-8DD8-23268B620BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{44130910-BB6F-4D35-8DD8-23268B620BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27906AD3-D504-40CA-B71A-AFF79A7F5C64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27906AD3-D504-40CA-B71A-AFF79A7F5C64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27906AD3-D504-40CA-B71A-AFF79A7F5C64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27906AD3-D504-40CA-B71A-AFF79A7F5C64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

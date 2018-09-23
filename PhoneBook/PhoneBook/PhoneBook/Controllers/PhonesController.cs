@@ -15,6 +15,7 @@ namespace PhoneBook.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult Update(int id)
         {
             return View();
@@ -23,6 +24,7 @@ namespace PhoneBook.Controllers
         [HttpPost]
         public ActionResult Update(Phone phone)
         {
+
             return RedirectToAction("Index", "Contacts");
         }
     }

@@ -62,6 +62,30 @@ namespace Logic.Services
                         Number = "07891156789"
                     }
                 }
+            },
+            new Contact ()
+            {
+                Name = "Leo Di Caprio",
+                Id = 3,
+                Email = "inviroment@gmail.com",
+                Phones = new List<Phone>
+                {
+                    new Phone
+                    {
+                        Type = PhoneTypes.Mobile,
+                        Number = "0123456789"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Home,
+                        Number = "0951753654"
+                    },
+                    new Phone
+                    {
+                        Type = PhoneTypes.Work,
+                        Number = "0621453987"
+                    }
+                }
             }
         };
 
@@ -111,29 +135,11 @@ namespace Logic.Services
                         : seed;
         }
 
-        private static List<Phone> GetMockedPhones()
+        public static void UpdatePhone(Contact contact)
         {
-            return new List<Phone>
-            {
-                new Phone
-                {
-                    Id =1,
-                    Number= "09999999999",
-                    Type = (PhoneTypes) 1
-                },
-                new Phone
-                {
-                    Id =2,
-                    Number= "0888888888",
-                    Type = (PhoneTypes) 2
-                },
-                new Phone
-                {
-                    Id =3,
-                    Number= "0777777777",
-                    Type = (PhoneTypes) 3
-                },
-            };
+            var oldContact = Get(contact.Id);
+
+            oldContact.Phones.
         }
     }
 }

@@ -6,16 +6,16 @@
 {
     <table>
         <tr>
+            <td></td>
             <td>Type</td>
             <td>Number</td>
         </tr>
         @foreach (var phone in Model)
         {
             <tr>
-                <td>@Html.ActionLink("Update", "Update", "Phones",
-                   new { id = phone.Id }, null)</td>
-                <td>@phone.Type</td>
-                <td>@phone.Number</td>
+                <td width="75">@Html.ActionLink("Update", "Update", "Phones", new { id = phone.Id }, null)</td>
+                <td width="75">@phone.Type</td>
+                <td width="150">@phone.Number</td>
             </tr>
         }
     </table>
