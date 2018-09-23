@@ -15,7 +15,7 @@
         <td align="center" width="50">ID</td>
         <td align="center" width="100">Name</td>
         <td align="center" width="150">Email</td>
-        <td align="center" width="50">Phones</td>
+        <td align="center" width="150"></td>
     </tr>
     @foreach (var contact in Model)
     {
@@ -25,7 +25,7 @@
             <td>@contact.Name</td>
             <td>@contact.Email</td>
             <td>
-                @Html.ActionLink("Phones", "ContactPhones", "Contact", new { id = contact.Id }, null)
+                @Html.ActionLink("Update phones", "Details", "Contact", new { id = contact.Id }, null)
             </td>
         </tr>
     }

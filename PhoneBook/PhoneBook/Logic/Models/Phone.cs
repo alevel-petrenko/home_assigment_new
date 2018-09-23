@@ -10,8 +10,7 @@ namespace Logic.Models
     {
         public int Id { get; set; }
 
-        public PhoneTypes Type { get; set; }  //1 home, 2 mobile, 3 work
-        // @Html.DropDownFor выпадающее меню
+        public PhoneTypes Type { get; set; }
 
         public string Number { get; set; }
     }

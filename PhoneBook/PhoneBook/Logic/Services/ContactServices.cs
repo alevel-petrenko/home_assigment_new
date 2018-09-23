@@ -48,16 +48,19 @@ namespace Logic.Services
                 {
                     new Phone
                     {
+                        Id =1,
                         Type = PhoneTypes.Mobile,
                         Number = "03728761112"
                     },
                     new Phone
                     {
+                        Id =2,
                         Type = PhoneTypes.Home,
                         Number = "0967160022"
                     },
                     new Phone
                     {
+                        Id =3,
                         Type = PhoneTypes.Work,
                         Number = "07891156789"
                     }
@@ -72,16 +75,19 @@ namespace Logic.Services
                 {
                     new Phone
                     {
+                        Id =1,
                         Type = PhoneTypes.Mobile,
                         Number = "0123456789"
                     },
                     new Phone
                     {
+                        Id =2,
                         Type = PhoneTypes.Home,
                         Number = "0951753654"
                     },
                     new Phone
                     {
+                        Id =3,
                         Type = PhoneTypes.Work,
                         Number = "0621453987"
                     }
@@ -133,13 +139,6 @@ namespace Logic.Services
             return _contacts.Any()
                         ? _contacts.Max(x => x.Id) + seed
                         : seed;
-        }
-
-        public static void UpdatePhone(Contact contact)
-        {
-            var oldContact = Get(contact.Id);
-
-            oldContact.Phones.
         }
     }
 }

@@ -7,11 +7,12 @@
 
 @using (Html.BeginForm("Update", "Phones"))
 {
+    <input type="hidden" name="ID" />
     <select width="75" name="Type">
         <option value="Home">Home</option>
         <option value="Mobile">Mobile</option>
         <option value="Work">Work</option>
     </select>
-    @Html.TextBoxFor(m => m.Number)
+    <input type="text" name="Number" />
     <input type="submit" value="Update number" />
 }

@@ -1,4 +1,5 @@
 ﻿using Logic.Models;
+using Logic.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,15 @@ namespace PhoneBook.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            return View();
+            var contact = ContactServices.Get(id);
+            return View(contact);
         }
 
         [HttpPost]
         public ActionResult Update(Phone phone)
         {
-
-            return RedirectToAction("Index", "Contacts");
+            //ContactServices.UpdatePhone(phone);
+            return RedirectToAction("Index", "Contact");
         }
     }
 }
