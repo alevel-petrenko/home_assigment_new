@@ -204,11 +204,11 @@
     <Content Include="Views\Contact\Partials\Phones.cshtml" />
     <Content Include="Views\Phones\Create.cshtml" />
     <Content Include="Views\Phones\Update.cshtml" />
+    <Content Include="Views\Phones\Partials\Phone_form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Phones\Partials\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

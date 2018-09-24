@@ -58,7 +58,7 @@ namespace PhoneBook.Controllers
             }
         }
 
-        public ActionResult Details(int id)
+        public ActionResult ContactPhones(int id)
         {
             var contact = ContactServices.Get(id);
             return View(contact);

@@ -1,0 +1,13 @@
+﻿@model Logic.Models.Phone
+
+@if (Model != null)
+{
+    <input type="hidden" name="ID" />
+    <select width="75" name="Type">
+        <option value="Home">Home</option>
+        <option value="Mobile">Mobile</option>
+        <option value="Work">Work</option>
+    </select>
+    <input type="text" name="Number" />
+    @Html.ValidationMessageFor(model => model.Number)
+}

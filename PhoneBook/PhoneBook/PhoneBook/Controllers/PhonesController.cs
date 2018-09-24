@@ -20,14 +20,19 @@ namespace PhoneBook.Controllers
         public ActionResult Update(int id)
         {
             var contact = ContactServices.Get(id);
-            return View(contact);
+            return View();
         }
 
         [HttpPost]
         public ActionResult Update(Phone phone)
         {
-            //ContactServices.UpdatePhone(phone);
-            return RedirectToAction("Index", "Contact");
+            if (ModelState.IsValid)
+            {
+                //ContactServices.UpdatePhone(phone);
+                return RedirectToAction("Index", "Contact");
+            }
+            else
+                return View();
         }
     }
 }

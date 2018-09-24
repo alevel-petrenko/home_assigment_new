@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,19 +7,24 @@ using System.Threading.Tasks;
 
 namespace Logic.Services
 {
-    class PhoneService
+    public static class PhoneService
     {
-        public static void UpdatePhone(Contact contact, Phone phone)
-        {
-            var oldContact = Get(contact.Id);
+        private static List<Phone> _phones;
 
-            oldContact.Phones.RemoveAt(phone.Id);
-            oldContact.Phones.Insert(phone.Id, phone);
+        //public PhoneService(List<Phone> phones)
+        //{
+        //    _phones = phones;
+        //}
+
+        public static void UpdatePhone(Phone phone)
+        {
+            _phones.RemoveAt(phone.Id);
+            _phones.Insert(phone.Id, phone);
         }
 
-        public static void AddPhone(Contact contact, Phone phone)
+        public static void AddPhone(Phone phone)
         {
-            contact.Phones.Add(phone);
+            _phones.Add(phone);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Logic.Models
 
         public PhoneTypes Type { get; set; }
 
+        [Required(ErrorMessage = "Поле должно быть установлено")]
+        [StringLength(15, MinimumLength = 7, ErrorMessage = "Длина строки должна быть от 7 до 15 символов")]
         public string Number { get; set; }
     }
 

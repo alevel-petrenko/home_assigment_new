@@ -20,12 +20,12 @@
     @foreach (var contact in Model)
     {
         <tr>
-            <td>@Html.ActionLink("Update", "Update", "Contact", new { id = contact.Id }, null)</td>
+            <td>@Html.ActionLink("Update contact", "Update", "Contact", new { id = contact.Id }, null)</td>
             <td>@contact.Id</td>
             <td>@contact.Name</td>
             <td>@contact.Email</td>
             <td>
-                @Html.ActionLink("Update phones", "Details", "Contact", new { id = contact.Id }, null)
+                @Html.ActionLink("Update phones", "ContactPhones", "Contact", new { id = contact.Id }, null)
             </td>
         </tr>
     }
