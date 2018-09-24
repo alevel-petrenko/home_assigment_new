@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic.Attributes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace Logic.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Имя не указано!")]
+        [NameChecking (ErrorMessage = "Имя начинается не с А")]
         [MaxLength(length:20, ErrorMessage ="Очень длинная строка!")]
         [MinLength(2, ErrorMessage ="Слишком короткое имя")]
         public string Name { get; set; }
