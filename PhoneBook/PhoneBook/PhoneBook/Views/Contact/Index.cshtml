@@ -4,7 +4,7 @@
     ViewBag.Title = "My Contacts";
 }
 
-<h2>My contacts</h2>
+<h2 align="center">My contacts</h2>
 <hr />
 
 @if (Model != null)
@@ -20,7 +20,10 @@
     @foreach (var contact in Model)
     {
         <tr>
-            <td>@Html.ActionLink("Update contact", "Update", "Contact", new { id = contact.Id }, null)</td>
+            <td>
+                @Html.ActionLink("Update contact", "Update", "Contact", new { id = contact.Id }, null) /
+                @Html.ActionLink("Delete contact", "Delete", "Contact", new { id = contact.Id }, null)
+            </td>
             <td>@contact.Id</td>
             <td>@contact.Name</td>
             <td>@contact.Email</td>

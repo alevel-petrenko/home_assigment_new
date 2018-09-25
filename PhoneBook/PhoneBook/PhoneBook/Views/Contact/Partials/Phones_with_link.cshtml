@@ -8,12 +8,14 @@
         <tr>
             <td width="50"><h4>Type</h4></td>
             <td width="75"><h4>Number</h4></td>
+            <td></td>
         </tr>
         @foreach (var phone in Model)
         {
             <tr>
-                <td ><h5>@phone.Type</h5></td>
-                <td ><h5>@phone.Number</h5></td>
+                <td width="75">@phone.Type</td>
+                <td width="150">@phone.Number</td>
+                <td width="75">@Html.ActionLink("Update", "Update", "Phones", new { id = phone.Id }, null)</td>
             </tr>
         }
     </table>

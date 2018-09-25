@@ -63,5 +63,13 @@ namespace PhoneBook.Controllers
             var contact = ContactServices.Get(id);
             return View(contact);
         }
+
+        //[HttpDelete]
+        public ActionResult Delete (int id)
+        {
+            ContactServices.Delete(id);
+            return RedirectToAction("Index");
+
+        }
     }
 }

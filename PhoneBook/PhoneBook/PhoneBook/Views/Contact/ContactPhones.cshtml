@@ -8,7 +8,7 @@
 <table>
     <tr>
         <td>
-            Name:
+            <h3>Name:</h3>
         </td>
         <td>
             @Html.DisplayFor(x => x.Name)
@@ -16,7 +16,7 @@
     </tr>
     <tr>
         <td>
-            Email:
+            <h3>Email:</h3>
         </td>
         <td>
             @Html.DisplayFor(x => x.Email)
@@ -26,5 +26,5 @@
 <hr />
 
 @{
-    Html.RenderPartial("Partials/Phones", Model.Phones);
+    Html.RenderPartial("Partials/Phones_with_link", Model.Phones);
 }
