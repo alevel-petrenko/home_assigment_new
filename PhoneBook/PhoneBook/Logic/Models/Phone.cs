@@ -14,7 +14,7 @@ namespace Logic.Models
         public PhoneTypes Type { get; set; }
 
         [Required(ErrorMessage = "Поле должно быть установлено")]
-        [StringLength(15, MinimumLength = 7, ErrorMessage = "Длина строки должна быть от 7 до 15 символов")]
+        [StringLength(15, MinimumLength = 7, ErrorMessage = "Длина телефона должна быть от 7 до 15 символов")]
         public string Number { get; set; }
     }
 

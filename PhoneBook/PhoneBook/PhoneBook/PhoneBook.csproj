@@ -202,7 +202,7 @@
     <Content Include="Views\Contact\Partials\ContactDetails.cshtml" />
     <Content Include="Views\Contact\ContactPhones.cshtml" />
     <Content Include="Views\Contact\Partials\Phones.cshtml" />
-    <Content Include="Views\Phones\Create.cshtml" />
+    <Content Include="Views\Phones\Add.cshtml" />
     <Content Include="Views\Phones\Update.cshtml" />
     <Content Include="Views\Phones\Partials\Phone_form.cshtml" />
   </ItemGroup>

@@ -9,7 +9,7 @@ namespace Logic.Services
 {
     public static class ContactServices
     {
-        public static List<Contact> _contacts = new List<Contact>
+        public static List<Contact> contacts = new List<Contact>
         {
             new Contact ()
             {
@@ -48,19 +48,19 @@ namespace Logic.Services
                 {
                     new Phone
                     {
-                        Id =1,
+                        Id =4,
                         Type = PhoneTypes.Mobile,
                         Number = "03728761112"
                     },
                     new Phone
                     {
-                        Id =2,
+                        Id =5,
                         Type = PhoneTypes.Home,
                         Number = "0967160022"
                     },
                     new Phone
                     {
-                        Id =3,
+                        Id =6,
                         Type = PhoneTypes.Work,
                         Number = "07891156789"
                     }
@@ -75,19 +75,19 @@ namespace Logic.Services
                 {
                     new Phone
                     {
-                        Id =1,
+                        Id =7,
                         Type = PhoneTypes.Mobile,
                         Number = "0123456789"
                     },
                     new Phone
                     {
-                        Id =2,
+                        Id =8,
                         Type = PhoneTypes.Home,
                         Number = "0951753654"
                     },
                     new Phone
                     {
-                        Id =3,
+                        Id =9,
                         Type = PhoneTypes.Work,
                         Number = "0621453987"
                     }
@@ -99,7 +99,7 @@ namespace Logic.Services
         {
             contact.Id = GetMax();
 
-            _contacts.Add(contact);
+            contacts.Add(contact);
 
             return contact.Id;
         }
@@ -109,18 +109,18 @@ namespace Logic.Services
             var contact = Get(id);
             if (contact != null)
             {
-                _contacts.Remove(contact);
+                contacts.Remove(contact);
             }
         }
 
         public static Contact Get(int id)
         {
-            return _contacts.FirstOrDefault(x => x.Id == id);
+            return contacts.FirstOrDefault(x => x.Id == id);
         }
 
         public static List<Contact> GetAll()
         {
-            return _contacts.OrderBy(x => x.Name).ToList();
+            return contacts.OrderBy(x => x.Name).ToList();
         }
 
         public static void Update(Contact contact)
@@ -129,15 +129,14 @@ namespace Logic.Services
 
             oldContact.Email = contact.Email;
             oldContact.Name = contact.Name;
-            oldContact.Phones = contact.Phones;
         }
 
         private static int GetMax()
         {
             const int seed = 1;
 
-            return _contacts.Any()
-                        ? _contacts.Max(x => x.Id) + seed
+            return contacts.Any()
+                        ? contacts.Max(x => x.Id) + seed
                         : seed;
         }
     }

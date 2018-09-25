@@ -19,20 +19,40 @@ namespace PhoneBook.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            var contact = ContactServices.Get(id);
-            return View();
+            PhoneServices.CopyPhones();
+
+            var phone = PhoneServices.Get(id);
+            return View(phone);
         }
 
         [HttpPost]
         public ActionResult Update(Phone phone)
         {
+            PhoneServices.CopyPhones();
+
             if (ModelState.IsValid)
             {
-                //ContactServices.UpdatePhone(phone);
+                PhoneServices.UpdatePhone(phone);
                 return RedirectToAction("Index", "Contact");
             }
             else
                 return View();
+        }
+
+        [HttpGet]
+        public ActionResult Add(int id)
+        {
+            PhoneServices.CopyPhones();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(Phone phone)
+        {
+            PhoneServices.CopyPhones();
+
+            return View();
         }
     }
 }

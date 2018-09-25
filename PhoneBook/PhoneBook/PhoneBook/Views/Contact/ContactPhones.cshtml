@@ -1,5 +1,9 @@
 ﻿@model Logic.Models.Contact
 
+@{
+    ViewBag.Title = "Contact details";
+}
+
 <h3>Contact details</h3>
 <table>
     <tr>
@@ -21,6 +25,6 @@
 </table>
 <hr />
 
-@{ 
+@{
     Html.RenderPartial("Partials/Phones", Model.Phones);
 }

@@ -19,10 +19,24 @@ namespace PhoneBook.API.Controllers
         }
 
         [HttpGet]
-        public Contact Get(int Id)
+        public IHttpActionResult Get(int Id)
         {
             var contact = ContactServices.Get(Id);
-            return contact;
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(contact);
+        }
+
+        [HttpPost]
+        public IHttpActionResult Post (Contact contact)
+        {
+            ContactServices.Create(contact);
+
+            return Ok();
         }
     }
 }
