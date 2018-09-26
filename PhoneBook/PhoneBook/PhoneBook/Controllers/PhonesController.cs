@@ -56,7 +56,7 @@ namespace PhoneBook.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete()
+        public ActionResult Delete(Phone phone)
         {
             PhoneServices.CopyPhones();
 

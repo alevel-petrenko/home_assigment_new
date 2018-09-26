@@ -16,7 +16,7 @@
                 <td width="75">@phone.Type</td>
                 <td width="150">@phone.Number</td>
                 <td width="100">@Html.ActionLink("Update", "Update", "Phones", new { id = phone.Id }, null) /
-                @Html.ActionLink("Delete", "Delete", "Phones", new { id = phone.Id }, null)</td>
+                @Html.ActionLink("Delete", "Delete", "Phones", new { phone = phone }, null)</td>
             </tr>
         }
     </table>
