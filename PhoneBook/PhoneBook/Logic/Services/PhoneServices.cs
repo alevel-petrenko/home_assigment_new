@@ -48,5 +48,10 @@ namespace Logic.Services
             const int seed = 1;
             return _phones.Any() ? _phones.Max(x => x.Id) + seed : seed;
         }
+
+        public static void Delete (int id)
+        {
+            _phones.Remove(Get(id));
+        }
     }
 }

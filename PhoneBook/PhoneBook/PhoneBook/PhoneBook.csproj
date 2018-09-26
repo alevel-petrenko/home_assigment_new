@@ -206,6 +206,7 @@
     <Content Include="Views\Phones\Update.cshtml" />
     <Content Include="Views\Phones\Partials\Phone_form.cshtml" />
     <Content Include="Views\Contact\Partials\Phones_with_link.cshtml" />
+    <Content Include="Views\Phones\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

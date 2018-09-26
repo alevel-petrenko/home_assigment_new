@@ -1,0 +1,9 @@
+﻿@model Logic.Models.Contact
+@{
+    ViewBag.Title = "Delete phone number";
+}
+
+<h2>Delete</h2>
+
+<h4>Are you about to delete phone number</h4>
+@Html.ActionLink("Delete", "Delete", "Phones", new { id = Model.Id }, null)

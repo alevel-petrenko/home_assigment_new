@@ -36,7 +36,7 @@ namespace PhoneBook.Controllers
                 return RedirectToAction("Index", "Contact");
             }
             else
-                return View();
+                return View("Update", phone);
         }
 
         [HttpGet]
@@ -53,6 +53,21 @@ namespace PhoneBook.Controllers
             PhoneServices.CopyPhones();
 
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult Delete()
+        {
+            PhoneServices.CopyPhones();
+
+            return View();
+        }
+
+        [HttpDelete]
+        public ActionResult Delete (int id)
+        {
+            PhoneServices.Delete(id);
+            return RedirectToAction("Index", "Contact");
         }
     }
 }
