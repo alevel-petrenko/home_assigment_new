@@ -56,18 +56,25 @@ namespace PhoneBook.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(Phone phone)
-        {
-            PhoneServices.CopyPhones();
-
-            return View();
-        }
-
-        [HttpDelete]
         public ActionResult Delete (int id)
         {
-            PhoneServices.Delete(id);
-            return RedirectToAction("Index", "Contact");
+            PhoneServices.CopyPhones();
+            var phone = PhoneServices.Get(id);
+
+            return View(phone);
+        }
+
+        [HttpPost]
+        public ActionResult Delete (Phone phone)
+        {
+            if (phone != null)
+            {
+                PhoneServices.DeletePhone(phone.Id);
+
+                return RedirectToAction("Index", "Contact");
+            }
+            else
+                return RedirectToAction("Index", "Phones");
         }
     }
 }

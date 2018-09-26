@@ -1,10 +1,11 @@
 ﻿@model Logic.Models.Phone
+
 @{
     ViewBag.Title = "Delete phone number";
 }
 
-<h4>Are you about to delete phone number?</h4>
-@Model.Number
-<form method="delete" action="~/Phones/Delete/@Model.Id">
+<h4>Are you about to delete phone number @Model.Number?</h4>
+
+<form method="post" action="/Phones/Delete/@Model">
     <button type="submit">Delete</button>
 </form>
