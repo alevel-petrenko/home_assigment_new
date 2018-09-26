@@ -35,6 +35,8 @@ namespace Logic.Services
         {
             var oldPhone = Get(phone.Id);
             oldPhone.Number = phone.Number;
+            oldPhone.Type = phone.Type;
+
         }
 
         public static void AddPhone(Phone phone)
