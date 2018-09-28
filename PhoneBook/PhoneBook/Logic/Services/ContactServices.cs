@@ -9,6 +9,7 @@ namespace Logic.Services
 {
     public static class ContactServices
     {
+
         public static List<Contact> contacts = new List<Contact>
         {
             new Contact ()

@@ -11,6 +11,8 @@ namespace PhoneBook.API.Controllers
 {
     public class ContactsController : ApiController
     {
+        private IContactService_Ns _contactService_Ns;
+
         [HttpGet]
         public IEnumerable<Contact> Get ()
         {

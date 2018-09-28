@@ -10,7 +10,6 @@ namespace PhoneBook.API
     {
         public static void Register(HttpConfiguration config)
         {
-
             config.Formatters.JsonFormatter.SupportedMediaTypes
                 .Add(new MediaTypeHeaderValue("application/json"));
 
