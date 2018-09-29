@@ -6,6 +6,14 @@
 
 <h4>Are you about to delete phone number @Model.Number?</h4>
 
-<form method="post" action="/Phones/Delete/@Model">
+@*<form method="post" action="/Phones/Delete/@Model">
     <button type="submit">Delete</button>
-</form>
+</form>*@
+
+@using (Html.BeginForm("Delete", "Phones"))
+{
+    <input type="hidden" value="@Model.Id" name="Id"/>
+    <input type="hidden" value="@Model.Type" name="Type"/>
+    <input type="hidden" value="@Model.Number" name="Number"/>
+    <input type="submit" value="Delete" />
+}
