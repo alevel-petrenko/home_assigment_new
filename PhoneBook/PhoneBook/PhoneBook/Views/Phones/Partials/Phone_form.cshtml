@@ -2,11 +2,7 @@
 
 @if (Model != null)
 {
-    <select width="75" name="Type">
-        <option value="Home">Home</option>
-        <option value="Mobile">Mobile</option>
-        <option value="Work">Work</option>
-    </select>
+    @Html.DropDownListFor(a => a.Type, new SelectList(Enum.GetValues(typeof(Logic.Models.PhoneTypes))))
     @Html.TextBoxFor(m => m.Number)
     @Html.ValidationMessageFor(model => model.Number)
     <br />
