@@ -1,0 +1,23 @@
+﻿@model Logic.Models.Contact
+
+<table>
+    <tr>
+        <td>Email:</td>
+        <td>
+            @Html.TextBoxFor(m => m.Email)
+            @Html.ValidationMessageFor(x => x.Email)
+        </td>
+    </tr>
+    <tr>
+        <td>Name:</td>
+        <td>
+            @Html.TextBoxFor(m => m.Name)
+            @Html.ValidationMessageFor(x => x.Name)
+        </td>
+    </tr>
+</table>
+
+@if (Model !=null)
+{
+    Html.RenderPartial("Partials/Phones", Model.Phones);
+}

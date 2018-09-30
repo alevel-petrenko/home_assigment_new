@@ -1,0 +1,24 @@
+﻿@model Logic.Models.Contact
+
+<table>
+    <tr>
+        <td>
+            Name:
+        </td>
+        <td>
+            @Html.DisplayFor(x => x.Name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            @Html.DisplayFor(x => x.Email)
+        </td>
+    </tr>
+</table>
+
+@{ 
+    Html.RenderPartial("Partials/Phones", Model.Phones);
+}

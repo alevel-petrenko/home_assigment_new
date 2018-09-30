@@ -1,0 +1,10 @@
+﻿@model Logic.Models.Phone
+
+@if (Model != null)
+{
+    @Html.DropDownListFor(a => a.Type, new SelectList(Enum.GetValues(typeof(Logic.Models.PhoneTypes))))
+    @Html.TextBoxFor(m => m.Number)
+    @Html.ValidationMessageFor(model => model.Number)
+    <br />
+    <br />
+}

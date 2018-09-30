@@ -1,0 +1,39 @@
+﻿@model List<Logic.Models.Contact>
+
+@{
+    ViewBag.Title = "My Contacts";
+}
+
+<h2 align="center">My contacts</h2>
+<hr />
+
+@if (Model != null)
+{
+<table align="center" border="1" cellpadding="10">
+    <tr>
+        <td width="150"></td>
+        <td align="center" width="50">ID</td>
+        <td align="center" width="100">Name</td>
+        <td align="center" width="150">Email</td>
+        <td align="center" width="150"></td>
+    </tr>
+    @foreach (var contact in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Update", "Update", "Contact", new { id = contact.Id }, null) /
+                @Html.ActionLink("Delete", "Delete", "Contact", new { id = contact.Id }, null)
+            </td>
+            <td>@contact.Id</td>
+            <td>@contact.Name</td>
+            <td>@contact.Email</td>
+            <td>
+                @Html.ActionLink("Update phones", "ContactPhones", "Contact", new { id = contact.Id }, null)
+            </td>
+        </tr>
+    }
+</table>
+}
+<hr />
+@Html.ActionLink("Add new contact", "Add", "Contact")
+

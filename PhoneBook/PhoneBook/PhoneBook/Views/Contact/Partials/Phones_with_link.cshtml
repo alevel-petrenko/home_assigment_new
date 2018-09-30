@@ -1,0 +1,23 @@
+﻿@model List<Logic.Models.Phone>
+
+<h3>Phones</h3>
+
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <td width="50"><h4>Type</h4></td>
+            <td width="75"><h4>Number</h4></td>
+            <td></td>
+        </tr>
+        @foreach (var phone in Model)
+        {
+            <tr>
+                <td width="75">@phone.Type</td>
+                <td width="150">@phone.Number</td>
+                <td width="100">@Html.ActionLink("Update", "Update", "Phones", new { id = phone.Id }, null) /
+                @Html.ActionLink("Delete", "Delete", "Phones", new { id = phone.Id }, null)</td>
+            </tr>
+        }
+    </table>
+}

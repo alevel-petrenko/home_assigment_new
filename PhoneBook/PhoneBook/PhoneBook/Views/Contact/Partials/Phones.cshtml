@@ -1,0 +1,20 @@
+﻿@model List<Logic.Models.Phone>
+
+<h3>Phones</h3>
+
+@if (Model != null)
+{
+    <table>
+        <tr>
+            <td width="50"><h4>Type</h4></td>
+            <td width="75"><h4>Number</h4></td>
+        </tr>
+        @foreach (var phone in Model)
+        {
+            <tr>
+                <td ><h5>@phone.Type</h5></td>
+                <td ><h5>@phone.Number</h5></td>
+            </tr>
+        }
+    </table>
+}

@@ -1,0 +1,12 @@
+﻿@model Logic.Models.Phone
+@{
+    ViewBag.Title = "Update particular phone number";
+}
+
+<h2>Update phone number</h2>
+
+@using (Html.BeginForm("Update", "Phones"))
+{
+    Html.RenderPartial("Partials/Phone_form", Model);
+    <input type="submit" value="Update number" />
+}

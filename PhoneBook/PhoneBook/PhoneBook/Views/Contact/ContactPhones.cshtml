@@ -1,0 +1,30 @@
+﻿@model Logic.Models.Contact
+
+@{
+    ViewBag.Title = "Contact details";
+}
+
+<h3>Contact details</h3>
+<table>
+    <tr>
+        <td>
+            Name:
+        </td>
+        <td>
+            @Html.DisplayFor(x => x.Name)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Email:
+        </td>
+        <td>
+            @Html.DisplayFor(x => x.Email)
+        </td>
+    </tr>
+</table>
+<hr />
+
+@{
+    Html.RenderPartial("Partials/Phones_with_link", Model.Phones);
+}
