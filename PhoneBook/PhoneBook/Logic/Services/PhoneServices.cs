@@ -9,6 +9,11 @@ namespace Logic.Services
 {
     public static class PhoneServices
     {
+        static PhoneServices()
+        {
+            CopyPhones();
+        }
+
         private static List<Phone> _phones;
 
         public static void CopyPhones()
@@ -36,7 +41,6 @@ namespace Logic.Services
             var oldPhone = Get(phone.Id);
             oldPhone.Number = phone.Number;
             oldPhone.Type = phone.Type;
-
         }
 
         public static void AddPhone(Phone phone)

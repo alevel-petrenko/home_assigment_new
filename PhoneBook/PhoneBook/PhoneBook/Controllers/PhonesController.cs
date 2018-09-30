@@ -19,8 +19,6 @@ namespace PhoneBook.Controllers
         [HttpGet]
         public ActionResult Update(int id)
         {
-            PhoneServices.CopyPhones();
-
             var phone = PhoneServices.Get(id);
             return View(phone);
         }
@@ -28,8 +26,6 @@ namespace PhoneBook.Controllers
         [HttpPost]
         public ActionResult Update(Phone phone)
         {
-            PhoneServices.CopyPhones();
-
             if (ModelState.IsValid)
             {
                 PhoneServices.UpdatePhone(phone);
@@ -42,23 +38,18 @@ namespace PhoneBook.Controllers
         [HttpGet]
         public ActionResult Add(int id)
         {
-            PhoneServices.CopyPhones();
-
             return View();
         }
 
         [HttpPost]
         public ActionResult Add(Phone phone)
         {
-            PhoneServices.CopyPhones();
-
             return View();
         }
 
         [HttpGet]
         public ActionResult Delete (int id)
         {
-            PhoneServices.CopyPhones();
             var phone = PhoneServices.Get(id);
 
             return View(phone);
