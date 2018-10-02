@@ -1,0 +1,1 @@
+[{"Id":1,"Name":"Big mak","Category":1,"Price":15.0,"StartHappyHours":19,"EndHappyHours":23},{"Id":1,"Name":"Cheeseburger","Category":2,"Price":12.0,"StartHappyHours":0,"EndHappyHours":0}]
