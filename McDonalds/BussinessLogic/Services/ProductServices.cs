@@ -33,8 +33,8 @@ namespace BussinessLogic.Services
                 Price = 15
             });
 
-            //var productCollection = JsonConvert.DeserializeObject<List<Product>>(File.ReadAllText(_path));
-            //_products = productCollection;
+            var productCollection = JsonConvert.DeserializeObject<List<Product>>(File.ReadAllText(_path));
+            _products = productCollection;
         }
 
         public void Add(Product product)

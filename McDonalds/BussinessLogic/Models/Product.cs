@@ -18,7 +18,7 @@ namespace BussinessLogic.Models
         
         public double FinalPrice ()
         {
-            return DateTime.Now.Hour >= StartHappyHours && DateTime.Now.Hour <= EndHappyHours ? Price * 0.8 : Price;
+            return DateTime.Now.Hour >= StartHappyHours && DateTime.Now.Hour < EndHappyHours ? Price * 0.8 : Price;
         }
     }
 }
