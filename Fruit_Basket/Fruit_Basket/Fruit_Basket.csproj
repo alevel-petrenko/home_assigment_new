@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D723FF5D-FF2D-44EB-BCC6-BD3DA7EF38AC}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CarRepository</RootNamespace>
-    <AssemblyName>CarRepository</AssemblyName>
+    <ProjectGuid>{367C5055-0519-4C56-9C98-1FAFD8B17D9C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Fruit_Basket</RootNamespace>
+    <AssemblyName>Fruit_Basket</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,10 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Car.cs" />
-    <Compile Include="Car1.cs" />
+    <Compile Include="Classes\Player.cs" />
+    <Compile Include="Classes\TypesOfPlayers\Cheater_Player.cs" />
+    <Compile Include="Classes\TypesOfPlayers\Player_Notebook.cs" />
+    <Compile Include="Classes\TypesOfPlayers\Uber_Cheater_Player.cs" />
+    <Compile Include="Classes\TypesOfPlayers\Uber_Player.cs" />
+    <Compile Include="Classes\TypesOfPlayers\Usuall_Player.cs" />
+    <Compile Include="Game.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Truck.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
