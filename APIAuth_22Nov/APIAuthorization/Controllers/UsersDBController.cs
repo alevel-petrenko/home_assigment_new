@@ -8,11 +8,11 @@ using System.Web.Http;
 
 namespace APIAuthorization.Controllers
 {
-    [RoutePrefix("api/UsersDB")]
+    [RoutePrefix("api/")]
     public class UsersDBController : ApiController
     {
         //IsDelete флаг для пометки на удаление.
-        //Возвращать из базы нужно только те поля, которые не помечен на удаление IsDeleted=True
+        //Возвращать из базы нужно только те поля, которые не помечен на удаление IsDeleted=False
 
         [HttpGet]
         public IHttpActionResult GetAll()
@@ -26,13 +26,20 @@ namespace APIAuthorization.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Add()
+        public IHttpActionResult Add(User user)
         {
-            using (var context = new UsersDB())
+            if (!ModelState.IsValid)
             {
-                context.Users.Add(null);
+                return BadRequest(ModelState);
+            }
+            else
+            {
+                using (var context = new UsersDB())
+                {
+                    context.Users.Add(user);
 
-                return Ok();
+                    return Ok();
+                }
             }
         }
 

@@ -14,12 +14,13 @@ namespace MVC_Author.Controllers
             return View();
         }
 
-        public ActionResult Register()
+        [Authorize]
+        public string TestAction()
         {
-
-            return View();
+            return "Text is visible only for registered users";
         }
 
+        [Authorize]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
