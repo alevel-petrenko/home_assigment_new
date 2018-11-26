@@ -35,14 +35,14 @@ namespace MVC_Author.Controllers
         [HttpPost]
         public async Task<ActionResult> Register(User user)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 string json = JsonConvert.SerializeObject(user);
 
                 HttpResponseMessage response = await client.PutAsJsonAsync($"{_APIpath}/UsersDB", user);
                 return RedirectToAction("User", "Index");
             }
-            return View(user);
+            return View();
         }
     }
 }

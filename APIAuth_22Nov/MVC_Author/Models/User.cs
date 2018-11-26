@@ -12,10 +12,8 @@ namespace MVC_Author.Models
 
         [Required(ErrorMessage ="Musthave field")]
         [StringLength(40)]
-        [EmailAddress(ErrorMessage = "Enter email")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Musthave field")]
         [StringLength(40)]
         public string Password { get; set; }
     }
