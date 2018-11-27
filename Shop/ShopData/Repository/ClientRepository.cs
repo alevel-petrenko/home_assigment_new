@@ -9,23 +9,42 @@ namespace ShopData.Repository
 {
     class ClientRepository
     {
-        //using Sql
-        //SQLCommand для хранимок
+
         //models are used as a parameter
         //реализовать все энпоинты
 
-        private readonly string _path = "";
+        readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
 
         public int Add (Client client)
         {
-            using (var conn = new SqlConnection(_path))
+            string sqlExpression = "Client_Insert";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
 
-                return 0;
+                command.Parameters.Add(client);
+                command.ExecuteScalar();
+                // если нам не надо возвращать id
+                //var result = command.ExecuteNonQuery();
+            }
+            return 0;
         }
 
         public void Update (int id)
         {
+            string sqlExpression = "Client_Update";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
 
+                command.Parameters.;
+                command.ExecuteScalar();
+                // если нам не надо возвращать id
+                //var result = command.ExecuteNonQuery();
+            }
+            return 0;
         }
 
         public void Delete (int id)
