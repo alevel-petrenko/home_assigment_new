@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -10,11 +11,8 @@ namespace ShopData.Repository
     class ClientRepository
     {
 
-        //models are used as a parameter
-        //реализовать все энпоинты
-
         readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
-
+        int value;
         public int Add (Client client)
         {
             string sqlExpression = "Client_Insert";
@@ -22,44 +20,84 @@ namespace ShopData.Repository
             {
                 SqlCommand command = new SqlCommand(sqlExpression, conn);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                command.Parameters.Add(client);
-                command.ExecuteScalar();
+                SqlParameter nameParam = new SqlParameter
+                {
+                    ParameterName = "@name",
+                    Value = client.Name
+                };
+                command.Parameters.Add(nameParam);
+                value = (int) command.ExecuteScalar();
                 // если нам не надо возвращать id
                 //var result = command.ExecuteNonQuery();
             }
-            return 0;
+            return value;
         }
 
-        public void Update (int id)
+        public void Update (int id, string name)
         {
             string sqlExpression = "Client_Update";
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 SqlCommand command = new SqlCommand(sqlExpression, conn);
                 command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter nameParam = new SqlParameter
+                {
+                    ParameterName = "@name",
+                    Value = name
+                };
+                command.Parameters.Add(nameParam);
 
-                command.Parameters.;
-                command.ExecuteScalar();
-                // если нам не надо возвращать id
-                //var result = command.ExecuteNonQuery();
+                SqlParameter idParam = new SqlParameter
+                {
+                    ParameterName = "@id",
+                    Value = id
+                };
+                command.Parameters.Add(idParam);
+
+                var result = command.ExecuteNonQuery();
             }
-            return 0;
         }
 
         public void Delete (int id)
         {
+            string sqlExpression = "Client_Delete";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter idParam = new SqlParameter
+                {
+                    ParameterName = "@id",
+                    Value = id
+                };
+                command.Parameters.Add(idParam);
 
+                var result = command.ExecuteNonQuery();
+            }
         }
 
-        public Client Get (int id)
+        public Client Get(int id)
         {
-            return new Client();
+            Client client = default;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string _getClientById = $"select * from [Client] where Id = {id}";
+
+                client = conn.Query<Client>(_getClientById).FirstOrDefault();
+                return client;
+            }
         }
 
         public List<Client> GetAll ()
         {
-            return new List<Client>();
+            List<Client> clients;
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                string _getClients = $"select * from [Client]";
+
+                clients = conn.Query<Client>(_getClients).ToList();
+                return clients;
+            }
         }
     }
 }
