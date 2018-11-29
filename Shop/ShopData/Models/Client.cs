@@ -3,14 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShopData.DataModels;
 
-namespace ShopData
+namespace ShopData.DataModels
 {
-    public class Client
+    public partial class Client
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public bool IsDeleted { get; set; }
-
     }
 }

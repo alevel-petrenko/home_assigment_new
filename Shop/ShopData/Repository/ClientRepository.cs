@@ -1,6 +1,8 @@
 ﻿using Dapper;
+using ShopData.DataModels;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,12 +10,25 @@ using System.Threading.Tasks;
 
 namespace ShopData.Repository
 {
-    class ClientRepository
+    public interface IClientRepository
     {
+        int Add(Client client);
 
+        void Update(Client client);
+
+        void Delete(int id);
+
+        List<Client> GetAll();
+
+        Client Get(int id);
+    }
+
+    class ClientRepository : IClientRepository
+    {
         readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
         int value;
-        public int Add (Client client)
+
+        public int Add(Client client)
         {
             string sqlExpression = "Client_Insert";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -26,14 +41,14 @@ namespace ShopData.Repository
                     Value = client.Name
                 };
                 command.Parameters.Add(nameParam);
-                value = (int) command.ExecuteScalar();
+                value = (int)command.ExecuteScalar();
                 // если нам не надо возвращать id
                 //var result = command.ExecuteNonQuery();
             }
             return value;
         }
 
-        public void Update (int id, string name)
+        public void Update(Client client)
         {
             string sqlExpression = "Client_Update";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -43,14 +58,14 @@ namespace ShopData.Repository
                 SqlParameter nameParam = new SqlParameter
                 {
                     ParameterName = "@name",
-                    Value = name
+                    Value = client.Name
                 };
                 command.Parameters.Add(nameParam);
 
                 SqlParameter idParam = new SqlParameter
                 {
                     ParameterName = "@id",
-                    Value = id
+                    Value = client.Id
                 };
                 command.Parameters.Add(idParam);
 
@@ -58,7 +73,7 @@ namespace ShopData.Repository
             }
         }
 
-        public void Delete (int id)
+        public void Delete(int id)
         {
             string sqlExpression = "Client_Delete";
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -68,7 +83,8 @@ namespace ShopData.Repository
                 SqlParameter idParam = new SqlParameter
                 {
                     ParameterName = "@id",
-                    Value = id
+                    Value = id,
+                    SqlDbType = SqlDbType.NVarChar
                 };
                 command.Parameters.Add(idParam);
 
@@ -78,24 +94,48 @@ namespace ShopData.Repository
 
         public Client Get(int id)
         {
-            Client client = default;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string _getClientById = $"select * from [Client] where Id = {id}";
+                var command = new SqlCommand("SELECT * FROM Client", conn);
 
-                client = conn.Query<Client>(_getClientById).FirstOrDefault();
-                return client;
+                var reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        //int id = reader.GetInt32(0);
+                        string name = reader.GetString(1);
+                        int age = reader.GetInt32(2);
+                    }
+                }
+
+                return null;
             }
         }
 
-        public List<Client> GetAll ()
+        public List<Client> GetAll()
         {
-            List<Client> clients;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string _getClients = $"select * from [Client]";
+                var command = new SqlCommand("SELECT * FROM [Client]", conn);
+                var reader = command.ExecuteReader();
+                List<Client> clients = null;
 
-                clients = conn.Query<Client>(_getClients).ToList();
+                var dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                foreach (DataRow dr in dataTable.Rows)
+                {
+                    var client = new Client();
+
+                    client.Id = int.Parse(dr["Id"].ToString());
+                    client.Name = dr["Name"].ToString();
+                    client.IsDeleted = bool.Parse(dr["IsDeleted"].ToString());
+
+                    clients.Add(client);
+                }
+
                 return clients;
             }
         }
