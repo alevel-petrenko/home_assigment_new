@@ -6,7 +6,7 @@ namespace ShopData.DataModels
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Transaction
+    public partial class Transactions
     {
         public int Id { get; set; }
 
@@ -14,7 +14,7 @@ namespace ShopData.DataModels
 
         public DateTime? Date { get; set; }
 
-        public double? Amount { get; set; }
+        public float? Amount { get; set; }
 
         public bool? IsDeleted { get; set; }
 

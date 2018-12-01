@@ -4,18 +4,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Shop.BussinesLogic;
+using BussinesLogic.Extensions;
+using BussinesLogic.Model;
+using BussinesLogic.Service;
 
 namespace Shop.Controllers
 {
     public class ClientsController : ApiController
     {
-        private IClientService _clientService = new IClientService();
+        private IClientService _clientService = new ClientService();
 
         [HttpGet]
         public IHttpActionResult GetAll ()
         {
-            var _clientList = _clientService.Get().Select(b => b.toViewModel());
+            var _clientList = _clientService.GetAll().Select(b => b.toViewModel());
 
             return Ok(_clientList);
         }
@@ -47,7 +49,7 @@ namespace Shop.Controllers
         [HttpDelete]
         public IHttpActionResult Delete (int id)
         {
-            _clientService.Delete();
+            _clientService.Delete(id);
 
             return Ok();
         }

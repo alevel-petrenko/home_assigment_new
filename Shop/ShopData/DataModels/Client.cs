@@ -12,7 +12,7 @@ namespace ShopData.DataModels
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
-            Transactions = new HashSet<Transaction>();
+            Transactions = new HashSet<Transactions>();
         }
 
         public int Id { get; set; }
@@ -22,6 +22,6 @@ namespace ShopData.DataModels
         public bool? IsDeleted { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<Transactions> Transactions { get; set; }
     }
 }

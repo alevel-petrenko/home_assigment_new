@@ -24,7 +24,6 @@ namespace ShopData.Repository
 
         public void Delete(int id)
         {
-            // _context.Clients.Remove(_context.Clients.FirstOrDefault(a => a.Id == id));
             var client = Get(id);
                 client.IsDeleted = true;
         }

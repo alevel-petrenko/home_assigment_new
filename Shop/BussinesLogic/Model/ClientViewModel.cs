@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BussinesLogic.Model
 {
-    class ClientViewModel
+    public class ClientViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

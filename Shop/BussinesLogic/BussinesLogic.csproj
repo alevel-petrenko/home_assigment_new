@@ -51,10 +51,9 @@
       <Project>{a738e282-4e54-41a0-8971-48be71406c98}</Project>
       <Name>ShopData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Shop\Shop.csproj">
-      <Project>{a3fdd22c-bb51-494d-8c24-12b897ff8a33}</Project>
-      <Name>Shop</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

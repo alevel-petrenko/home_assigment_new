@@ -19,7 +19,7 @@ namespace BussinesLogic.Service
         ClientDTO Get(int id);
     }
 
-    class ClientService : IClientService
+    public class ClientService : IClientService
     {
         private UnitOfWork _uOW = new UnitOfWork();
 

@@ -19,8 +19,8 @@ namespace BussinesLogic.Extensions
 
             return new ClientViewModel
             {
-                Name = clientDTO.Name,
-                Id = clientDTO.Id
+                Id = clientDTO.Id,
+                Name = clientDTO.Name
             };
         }
 
