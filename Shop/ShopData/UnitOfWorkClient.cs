@@ -9,7 +9,7 @@ using ShopData;
 
 namespace ShopData
 {
-    public class UnitOfWork : IDisposable
+    public class UnitOfWorkClient : IDisposable
     {
         private ShopDataModel context = new ShopDataModel();
 

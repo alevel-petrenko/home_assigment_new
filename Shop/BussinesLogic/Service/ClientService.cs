@@ -21,7 +21,7 @@ namespace BussinesLogic.Service
 
     public class ClientService : IClientService
     {
-        private UnitOfWork _uOW = new UnitOfWork();
+        private UnitOfWorkClient _uOW = new UnitOfWorkClient();
 
         public int Add(ClientDTO clientDTO)
         {

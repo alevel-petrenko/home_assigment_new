@@ -69,7 +69,7 @@
     <Compile Include="Repository\TransactionsRepository.cs" />
     <Compile Include="Repository\ClientRepository.cs" />
     <Compile Include="Repository\EFClientRepository.cs" />
-    <Compile Include="UnitOfWork.cs" />
+    <Compile Include="UnitOfWorkClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
