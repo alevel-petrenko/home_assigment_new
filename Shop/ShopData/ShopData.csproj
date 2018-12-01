@@ -61,6 +61,7 @@
     <Compile Include="DataModels\Transactions_View.cs" />
     <Compile Include="DTO %28BusinessModels%29\TransactionsDTO.cs" />
     <Compile Include="DTO %28BusinessModels%29\ClientDTO.cs" />
+    <Compile Include="Extensions\ClientConversions.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

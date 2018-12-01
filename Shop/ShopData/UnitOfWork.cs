@@ -27,6 +27,18 @@ namespace ShopData
             }
         }
 
+        //public EFClientRepository ClientRepository
+        //{
+        //    get
+        //    {
+        //        if (_clientRepository == null)
+        //        {
+        //            _eFClientRepository = new EFClientRepository(context);
+        //        }
+        //        return _eFClientRepository;
+        //    }
+        //}
+
         public void Save ()
         {
             context.SaveChanges();

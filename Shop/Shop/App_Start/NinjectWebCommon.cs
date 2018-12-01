@@ -61,7 +61,7 @@ namespace Shop.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IUserRepository>().To<UserRepository>();
+            //kernel.Bind<IUserRepository>().To<UserRepository>();
         }        
     }
 }

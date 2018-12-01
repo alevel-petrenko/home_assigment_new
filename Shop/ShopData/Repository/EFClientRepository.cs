@@ -24,22 +24,25 @@ namespace ShopData.Repository
 
         public void Delete(int id)
         {
-            _context.Clients.Remove(_context.Clients.FirstOrDefault(a => a.Id == id));
+            // _context.Clients.Remove(_context.Clients.FirstOrDefault(a => a.Id == id));
+            var client = Get(id);
+                client.IsDeleted = true;
         }
 
         public Client Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Clients.FirstOrDefault(a => a.Id == id);
         }
 
         public List<Client> GetAll()
         {
-            throw new NotImplementedException();
+            return _context.Clients.ToList();
         }
 
         public void Update(Client client)
         {
-            throw new NotImplementedException();
+            var oldClient = Get(client.Id);
+            oldClient.Name = client.Name;
         }
     }
 }

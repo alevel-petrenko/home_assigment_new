@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopData.DTO__BusinessModels_
+namespace BussinesLogic.Model
 {
-    public class ClientDTO
+    class ClientViewModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
