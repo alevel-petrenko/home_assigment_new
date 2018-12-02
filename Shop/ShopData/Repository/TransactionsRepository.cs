@@ -9,151 +9,151 @@ using System.Threading.Tasks;
 
 namespace ShopData.Repository
 {
-    class TransactionsRepository
+    public interface ITransactionsRepository
     {
-        public interface ITransactionsRepository
+        int Add(Transactions transaction);
+
+        void Update(Transactions transaction);
+
+        void Delete(int id);
+
+        List<Transactions> GetAll();
+
+        Transactions Get(int id);
+    }
+
+    class TransactionsRepository : ITransactionsRepository
+    {
+        readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
+
+        public int Add(Transactions transaction)
         {
-            int Add(Transactions transaction);
+            string sqlExpression = "Transactions_Insert";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
 
-            void Update(Transactions transaction);
-
-            void Delete(int id);
-
-            List<Transactions> GetAll();
-
-            Transactions Get(int id);
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@ClientId",
+                    Value = transaction.ClientId
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@Amount",
+                    Value = transaction.Amount
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@Date",
+                    Value = transaction.Date
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@IsDeleted",
+                    Value = transaction.IsDeleted
+                });
+                var result = (int)command.ExecuteScalar();
+            }
+            return transaction.Id;
         }
 
-        class ClientRepository : ITransactionsRepository
+        public void Update(Transactions transaction)
         {
-            readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
-            int value;
-
-            public int Add(Transactions transaction)
+            string sqlExpression = "Transactions_Update";
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sqlExpression = "Transactions_Insert";
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter
                 {
-                    SqlCommand command = new SqlCommand(sqlExpression, conn);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlParameter nameParam = new SqlParameter
-                    {
-                        ParameterName = "@amount",
-                        Value = transaction.Amount
-                    };
-                    command.Parameters.Add(nameParam);
-                    value = (int)command.ExecuteScalar();
-                    // если нам не надо возвращать id
-                    //var result = command.ExecuteNonQuery();
-                }
-                return value;
+                    ParameterName = "@ClientId",
+                    Value = transaction.ClientId
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@Amount",
+                    Value = transaction.Amount
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@Date",
+                    Value = transaction.Date
+                });
+                command.Parameters.Add(new SqlParameter
+                {
+                    ParameterName = "@IsDeleted",
+                    Value = transaction.IsDeleted
+                });
+                var result = command.ExecuteNonQuery();
             }
+        }
 
-            public void Update(Client client)
+        public void Delete(int id)
+        {
+            string sqlExpression = "Transactions_Delete";
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sqlExpression = "Client_Update";
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                SqlCommand command = new SqlCommand(sqlExpression, conn);
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+                command.Parameters.Add(new SqlParameter
                 {
-                    SqlCommand command = new SqlCommand(sqlExpression, conn);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlParameter nameParam = new SqlParameter
-                    {
-                        ParameterName = "@name",
-                        Value = client.Name
-                    };
-                    command.Parameters.Add(nameParam);
-
-                    SqlParameter idParam = new SqlParameter
-                    {
-                        ParameterName = "@id",
-                        Value = client.Id
-                    };
-                    command.Parameters.Add(idParam);
-
-                    var result = command.ExecuteNonQuery();
-                }
+                    ParameterName = "@id",
+                    Value = id,
+                });
+                var result = command.ExecuteNonQuery();
             }
+        }
 
-            public void Delete(int id)
+        public Transactions Get(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                string sqlExpression = "Client_Delete";
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                var command = new SqlCommand($"SELECT * FROM Client where Id = {id}", conn);
+                var reader = command.ExecuteReader();
+                Transactions tr = new Transactions();
+
+                if (reader.HasRows)
                 {
-                    SqlCommand command = new SqlCommand(sqlExpression, conn);
-                    command.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlParameter idParam = new SqlParameter
+                    while (reader.Read())
                     {
-                        ParameterName = "@id",
-                        Value = id,
-                        SqlDbType = SqlDbType.NVarChar
-                    };
-                    command.Parameters.Add(idParam);
-
-                    var result = command.ExecuteNonQuery();
-                }
-            }
-
-            public Client Get(int id)
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    var command = new SqlCommand("SELECT * FROM Client", conn);
-
-                    var reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            //int id = reader.GetInt32(0);
-                            string name = reader.GetString(1);
-                            int age = reader.GetInt32(2);
-                        }
+                        tr.Id = reader.GetInt32(0);
+                        tr.ClientId = reader.GetInt32(1);
+                        tr.Date = reader.GetDateTime(2);
+                        tr.Amount = reader.GetFloat(3);
+                        tr.IsDeleted = reader.GetBoolean(4);
+                        tr.Client = new Client();
                     }
-
-                    return null;
                 }
+                return tr;
             }
+        }
 
-            public List<Client> GetAll()
+        public List<Transactions> GetAll()
+        {
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                var command = new SqlCommand("SELECT * FROM [Client]", conn);
+                var reader = command.ExecuteReader();
+                List<Transactions> transactions = null;
+
+                var dataTable = new DataTable();
+                dataTable.Load(reader);
+
+                foreach (DataRow dr in dataTable.Rows)
                 {
-                    var command = new SqlCommand("SELECT * FROM [Client]", conn);
-                    var reader = command.ExecuteReader();
-                    List<Client> clients = null;
+                    var tr = new Transactions();
 
-                    var dataTable = new DataTable();
-                    dataTable.Load(reader);
-
-                    foreach (DataRow dr in dataTable.Rows)
-                    {
-                        var client = new Client();
-
-                        client.Id = int.Parse(dr["Id"].ToString());
-                        client.Name = dr["Name"].ToString();
-                        client.IsDeleted = bool.Parse(dr["IsDeleted"].ToString());
-
-                        clients.Add(client);
-                    }
-
-                    return clients;
+                    tr.Id = int.Parse(dr["Id"].ToString());
+                    tr.ClientId = int.Parse(dr["ClientId"].ToString());
+                    tr.Date = DateTime.Parse(dr["Date"].ToString());
+                    tr.Amount = float.Parse(dr["Amount"].ToString());
+                    tr.IsDeleted = bool.Parse(dr["IsDeleted"].ToString());
+                    tr.Client = new Client();
+                    transactions.Add(tr);
                 }
-            }
-
-            public void Update(Transactions transaction)
-            {
-                throw new NotImplementedException();
-            }
-
-            List<Transactions> ITransactionsRepository.GetAll()
-            {
-                throw new NotImplementedException();
-            }
-
-            Transactions ITransactionsRepository.Get(int id)
-            {
-                throw new NotImplementedException();
+                return transactions;
             }
         }
     }
