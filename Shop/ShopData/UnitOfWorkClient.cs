@@ -9,21 +9,27 @@ using ShopData;
 
 namespace ShopData
 {
-    public class UnitOfWorkClient : IDisposable
+    public interface IUnitOfWorkClient
+    {
+        void Save();
+        EFClientRepository EFClientRepository { get; }
+    }
+
+    public class UnitOfWorkClient : IDisposable, IUnitOfWorkClient
     {
         private ShopDataModel context = new ShopDataModel();
 
-        private EFClientRepository _eFClientRepository;
+        private EFClientRepository _EFClientRepository;
 
-        public EFClientRepository eFClientRepository
+        public EFClientRepository EFClientRepository
         {
             get
             {
-                if (_eFClientRepository == null)
+                if (_EFClientRepository == null)
                 {
-                    _eFClientRepository = new EFClientRepository(context);
+                    _EFClientRepository = new EFClientRepository(context);
                 }
-                return _eFClientRepository;
+                return _EFClientRepository;
             }
         }
 

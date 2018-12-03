@@ -7,6 +7,7 @@ using ShopData.DataModels;
 using ShopData;
 using ShopData.DTO__BusinessModels_;
 using ShopData.Extensions;
+using BussinesLogic.Model;
 
 namespace BussinesLogic.Service
 {
@@ -26,7 +27,7 @@ namespace BussinesLogic.Service
         public int Add(ClientDTO clientDTO)
         {
             var client = clientDTO.to_SQLModel();
-            _uOW.eFClientRepository.Add(client);
+            _uOW.EFClientRepository.Add(client);
             _uOW.Save();
 
             return client.Id;
@@ -34,24 +35,58 @@ namespace BussinesLogic.Service
 
         public void Delete(int id)
         {
-            _uOW.eFClientRepository.Delete(id);
+            _uOW.EFClientRepository.Delete(id);
             _uOW.Save();
         }
 
         public ClientDTO Get(int id)
         {
-            return _uOW.eFClientRepository.Get(id).to_DTOModel();
+            return _uOW.EFClientRepository.Get(id).to_DTOModel();
         }
 
         public List<ClientDTO> GetAll()
         {
-            return _uOW.eFClientRepository.GetAll().Select(a => a.to_DTOModel()).ToList();
+            return _uOW.EFClientRepository.GetAll().Select(a => a.to_DTOModel()).ToList();
         }
 
         public void Update(ClientDTO clientDTO)
         {
             var client = clientDTO.to_SQLModel();
-            
+        }
+    }
+
+    public class ClientServiceMock : IClientService
+    {
+        public int Add(ClientDTO clientDTO)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ClientDTO Get(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ClientDTO> GetAll()
+        {
+            return new List<ClientDTO>
+            {
+                new ClientDTO
+                {
+                    Id = 100,
+                    Name = "LuckyOne Mocked"
+                }
+            };
+        }
+
+        public void Update(ClientDTO clientDTO)
+        {
+            throw new NotImplementedException();
         }
     }
 }

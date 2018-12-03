@@ -12,13 +12,18 @@ namespace Shop.Controllers
 {
     public class ClientsController : ApiController
     {
-        private IClientService _clientService = new ClientService();
+        private readonly IClientService _clientService;
+
+        public ClientsController(IClientService clientService)
+        {
+            _clientService = clientService;
+        }
 
         [HttpGet]
         public IHttpActionResult GetAll ()
         {
             var _clientList = _clientService.GetAll().Select(b => b.toViewModel());
-
+            
             return Ok(_clientList);
         }
 
