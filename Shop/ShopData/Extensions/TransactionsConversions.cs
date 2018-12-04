@@ -22,11 +22,7 @@ namespace ShopData.Extensions
                 Id = transactions.Id,
                 Date = transactions.Date.Value,
                 Amount = transactions.Amount.Value,
-                Client = new ClientDTO
-                {
-                    Name = transactions.Client.Name,
-                    Id = transactions.Client.Id
-                }
+                Client = transactions.Client.to_DTOModel()
             };
         }
 
@@ -42,11 +38,7 @@ namespace ShopData.Extensions
                 Id = transactionsDTO.Id,
                 Date = transactionsDTO.Date,
                 Amount = transactionsDTO.Amount,
-                Client = new Client
-                {
-                    Name = transactionsDTO.Client.Name,
-                    Id = transactionsDTO.Client.Id
-                }
+                Client = transactionsDTO.Client.to_SQLModel()
             };
         }
     }

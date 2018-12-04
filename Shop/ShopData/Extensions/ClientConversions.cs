@@ -20,7 +20,8 @@ namespace ShopData.Extensions
             return new ClientDTO
             {
                 Id = client.Id,
-                Name = client.Name
+                Name = client.Name,
+                IsDeleted = client.IsDeleted
             };
         }
 
@@ -34,7 +35,8 @@ namespace ShopData.Extensions
             return new Client
             {
                 Id = clientDto.Id,
-                Name = clientDto.Name
+                Name = clientDto.Name,
+                IsDeleted = clientDto.IsDeleted
             };
         }
     }

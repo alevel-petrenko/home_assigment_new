@@ -35,7 +35,9 @@ namespace BussinesLogic.Service
 
         public void Delete(int id)
         {
-            _uOW.EFClientRepository.Delete(id);
+            var client = Get(id);
+
+            client.IsDeleted = true;
             _uOW.Save();
         }
 
