@@ -10,14 +10,14 @@ namespace ShopData.Extensions
 {
     public static class TransactionsConversions
     {
-        public static TransactionsDTO to_DTOModel(this Transactions transactions)
+        public static TransactionDTO to_DTOModel(this Transactions transactions)
         {
             if (transactions == null)
             {
                 return null;
             }
 
-            return new TransactionsDTO
+            return new TransactionDTO
             {
                 Id = transactions.Id,
                 Date = transactions.Date.Value,
@@ -26,7 +26,7 @@ namespace ShopData.Extensions
             };
         }
 
-        public static Transactions to_SQLModel(this TransactionsDTO transactionsDTO)
+        public static Transactions to_SQLModel(this TransactionDTO transactionsDTO)
         {
             if (transactionsDTO == null)
             {
