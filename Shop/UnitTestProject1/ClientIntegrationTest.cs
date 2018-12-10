@@ -2,6 +2,10 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ShopData.DataModels;
+using System.Linq;
+using ShopData;
+using System.Transactions;
 
 namespace UnitTestProject1
 {
@@ -11,6 +15,16 @@ namespace UnitTestProject1
     [TestClass]
     public class ClientIntegrationTest
     {
+        private UnitOfWork _uOW;
+        private ShopDataModel _ctx;
+
+        [TestInitialize]
+        public void Initialize ()
+        {
+            _uOW = new UnitOfWork();
+            _ctx = new ShopDataModel();
+        }
+
         public ClientIntegrationTest()
         {
             //
@@ -18,23 +32,10 @@ namespace UnitTestProject1
             //
         }
 
-        private TestContext testContextInstance;
-
         /// <summary>
         ///Gets or sets the test context which provides
         ///information about and functionality for the current test run.
         ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
 
         #region Additional test attributes
         //
@@ -100,7 +101,7 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestDbRecording ()
         {
-            using (var ctx = new EntityFW())
+            using (var ctx = new ShopDataModel())
             {
 
             }
@@ -112,14 +113,118 @@ namespace UnitTestProject1
             //Assign
             using (var ctx = new ShopDataModel())
             {
-                int count = ctx.Client;
+                //int count = ctx.Clients;
                 
-                using (var ts = new Trans)
+                //using (var ts = new TransactionScope)
+                {}
             }
+        }
+
+        [TestMethod]
+        public void Test_GetDetails()
+        {
+            //Assign
+            var ctx = new ShopDataModel();
+            var client = ctx.Clients.FirstOrDefault(c => !c.IsDeleted.HasValue || !c.IsDeleted.Value);
+            //Action
+            var uOwClient = _uOW.EFClientRepository.Get(client.Id);
+            //Assert
+            Assert.AreEqual(client.Id, uOwClient.Id);
+            Assert.AreEqual(client.Name, uOwClient.Name);
+            Assert.AreEqual(client.IsDeleted, uOwClient.IsDeleted);
+            Assert.AreEqual(client.Transactions, uOwClient.Transactions);
+        }
+
+        [TestMethod]
+        public void Test_GetDetails_ExistingItem()
+        {
+            //Assign
+
+            var ctx = new ShopDataModel();
+            var client = ctx.Clients.FirstOrDefault(c => !c.IsDeleted.HasValue || !c.IsDeleted.Value);
+            //Action
+            if (client == null)
+            {
+                Assert.IsTrue(true, "Emplty recordset");
+                return;
+            }
+
+            var uOwClient = _uOW.EFClientRepository.Get(client.Id);
+            //Assert
+
+            Assert.AreEqual(client.Id, uOwClient.Id);
+            Assert.AreEqual(client.Name, uOwClient.Name);
+            Assert.AreEqual(client.IsDeleted, uOwClient.IsDeleted);
+            Assert.AreEqual(client.Transactions, uOwClient.Transactions);
+        }
+
+        [TestMethod]
+        public void Test_GetDetails_Nullable()
+        {
+            //Assign
+            var ctx = new ShopDataModel();
+            var maxId = ctx.Clients.Max(c => c.Id) + 1;
+
+            //Action
+            var client = _uOW.EFClientRepository.Get(maxId);
+
+            //Assert
+            Assert.IsNull(client);
+        }
+
+        [TestMethod]
+        public void Test_GetDetails_DeleteClients()
+        {
+            //Assign
+            var ctx = new ShopDataModel();
+            var deletedClient = ctx.Clients.FirstOrDefault(c => c.IsDeleted.HasValue);
+
+            //Action
+            if(deletedClient == null)
+            {
+                Assert.IsTrue(true, "No deleted client");
+                return;
+            }
+
+            var client = _uOW.EFClientRepository.Get(deletedClient.Id);
+
+            //Assert
+            Assert.IsNull(client);
+        }
+
+        [TestMethod]
+        public void Test_DeleteClient()
+        {
+            //Assign
+            var ctx = new ShopDataModel();
+            var deletedClient = ctx.Clients.FirstOrDefault(c => c.IsDeleted.HasValue);
+
+            //Action
+            
+
+            //Assert
+            
+
+        }
+
+        [TestMethod]
+        public void Test_UpdateClient()
+        {
+            //Assign
+            var ctx = new ShopDataModel();
+            var deletedClient = ctx.Clients.FirstOrDefault(c => c.IsDeleted.HasValue);
+
+            //Action
+
+
+            //Assert
+
+
         }
     }
 }
 
+//Hommetask
 //try test на добавление в базу
 // сделать DI здесь
 // почитать про Transactions

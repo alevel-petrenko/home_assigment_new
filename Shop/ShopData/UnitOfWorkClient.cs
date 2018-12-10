@@ -9,13 +9,14 @@ using ShopData;
 
 namespace ShopData
 {
-    public interface IUnitOfWorkClient
+    public interface IUnitOfWork
     {
         void Save();
         EFClientRepository EFClientRepository { get; }
+        EFTransactionsRepository EFTransactionsRepository { get; }
     }
 
-    public class UnitOfWorkClient : IDisposable, IUnitOfWorkClient
+    public class UnitOfWork : IDisposable, IUnitOfWork
     {
         private ShopDataModel context = new ShopDataModel();
 
@@ -33,17 +34,19 @@ namespace ShopData
             }
         }
 
-        //public EFClientRepository ClientRepository
-        //{
-        //    get
-        //    {
-        //        if (_clientRepository == null)
-        //        {
-        //            _eFClientRepository = new EFClientRepository(context);
-        //        }
-        //        return _eFClientRepository;
-        //    }
-        //}
+        private EFTransactionsRepository _EFTransactionsRepository;
+
+        public EFTransactionsRepository EFTransactionsRepository
+        {
+            get
+            {
+                if (_EFTransactionsRepository == null)
+                {
+                    _EFTransactionsRepository = new EFTransactionsRepository(context);
+                }
+                return _EFTransactionsRepository;
+            }
+        }
 
         public void Save ()
         {

@@ -22,7 +22,7 @@ namespace ShopData.Repository
         Transactions Get(int id);
     }
 
-    class TransactionsRepository : ITransactionsRepository
+    public class TransactionsRepository : ITransactionsRepository
     {
         readonly string connectionString = @"Data Source=PETRENKOPC\SQLEXPRESS;Initial Catalog=Shop;Integrated Security=True";
 

@@ -7,10 +7,9 @@ namespace Shop.App_Start
     using System.Web;
     using BussinesLogic.Service;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
+    using ShopData;
     using Ninject;
     using Ninject.Web.Common;
-    using ShopData;
 
     public static class NinjectWebCommon 
     {
@@ -63,8 +62,7 @@ namespace Shop.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IClientService>().To<ClientService>();
-            kernel.Bind<IUnitOfWorkClient>().To<UnitOfWorkClient>();
-
+            kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }
 }
