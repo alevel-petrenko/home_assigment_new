@@ -16,7 +16,7 @@ namespace UnitTestProject1
         //на АПИ не работает TransactionScope
         private HttpClient _httpClient;
         private ShopDataModel _ctx;
-        private int _id = 22;//hardcode
+        private int _id = 22; //hardcode
 
         [TestInitialize]
         public void Initializer ()
@@ -24,7 +24,7 @@ namespace UnitTestProject1
             _httpClient = new HttpClient();
             _ctx = new ShopDataModel();
 
-            _httpClient.BaseAddress = new Uri("http://localhost:59794/api"); //???
+            _httpClient.BaseAddress = new Uri("http://localhost:59794/api");
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
