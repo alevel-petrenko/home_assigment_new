@@ -14,7 +14,7 @@ namespace ShopData.DataModels
 
         public DateTime? Date { get; set; }
 
-        public float? Amount { get; set; }
+        public Single? Amount { get; set; }
 
         public bool? IsDeleted { get; set; }
 

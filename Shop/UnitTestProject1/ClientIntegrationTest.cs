@@ -95,7 +95,7 @@ namespace UnitTestProject1
             // Act
             var result = Divide(val);
             //Assert
-            Assert.AreEqual(0.5, result);
+            Assert.AreEqual(null , result);
         }
 
         [TestMethod]
@@ -132,7 +132,6 @@ namespace UnitTestProject1
             Assert.AreEqual(client.Id, uOwClient.Id);
             Assert.AreEqual(client.Name, uOwClient.Name);
             Assert.AreEqual(client.IsDeleted, uOwClient.IsDeleted);
-            Assert.AreEqual(client.Transactions, uOwClient.Transactions);
         }
 
         [TestMethod]

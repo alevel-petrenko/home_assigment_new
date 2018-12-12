@@ -11,7 +11,7 @@ namespace ShopData.DataModels
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
-        public double? Amount { get; set; }
+        public Single? Amount { get; set; }
 
         public int? ClientId { get; set; }
 
