@@ -9,6 +9,11 @@ namespace ShopData.Repository
 {
     public class EFClientRepository : IClientRepository
     {
+        public EFClientRepository()
+        {
+
+        }
+
         public EFClientRepository(ShopDataModel context)
         {
             _context = context;

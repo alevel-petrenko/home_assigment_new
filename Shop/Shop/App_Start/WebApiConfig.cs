@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
@@ -22,6 +23,9 @@ namespace Shop
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            //глобальный фильтр на все приложение
+            config.Filters.Add(new ZeroHandlerAtt());
         }
     }
 }

@@ -13,6 +13,8 @@ namespace BussinesLogic.Service
 {
     public interface ITransactionService
     {
+        bool Validate(string name);
+
         int Add(TransactionDTO transactionDTO);
         void Delete(int id);
         void Update(TransactionDTO transactionDTO);
@@ -54,6 +56,11 @@ namespace BussinesLogic.Service
         public void Update(TransactionDTO transactionDTO)
         {
             var transaction = transactionDTO.to_SQLModel();
+        }
+
+        public bool Validate(string name)
+        {
+            return true;
         }
     }
 }

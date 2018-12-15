@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using BussinesLogic.Model;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShopData.DataModels;
 using System;
 using System.Collections.Generic;
@@ -35,11 +36,11 @@ namespace UnitTestProject1
         [TestCleanup]
         public void Destroyer ()
         {
-            _ctx.Database.ExecuteSqlCommand($"Delete from Client ([name], IsDeleted) where Id = {_id}");
+            //_ctx.Database.ExecuteSqlCommand($"Delete from Client ([name], IsDeleted) where Id = {_id}");
         }
 
         [TestMethod]
-        public async void Test_GetClients ()
+        public async Task Test_GetClients ()
         {
             //Assign
             var count = _ctx.Clients.Count(a => a.IsDeleted.HasValue || a.IsDeleted.Value);
@@ -51,6 +52,29 @@ namespace UnitTestProject1
             var list = await result.Content.ReadAsAsync<List<Client>>();
             //Assert
             Assert.AreEqual(count, list.Count);
+        }
+
+        [TestMethod]
+        public async Task Test_CheckEmptyName ()
+        {
+            //Assign
+            var client = new ClientViewModel
+            {
+                Name = "Maria Ruiz"
+            };
+
+            //Action
+            var result = await _httpClient.PostAsJsonAsync("clients", client);
+            Assert.AreEqual(System.Net.HttpStatusCode.BadRequest, result.StatusCode);
+
+            //Assert
+            Assert.AreEqual("Duplicate", result);
+        }
+
+        [TestMethod]
+        public async Task Test_CheckDuplicate ()
+        {
+
         }
     }
 }

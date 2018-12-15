@@ -18,11 +18,16 @@ namespace ShopData
 
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
+        public UnitOfWork()
+        {
+
+        }
+
         private ShopDataModel context = new ShopDataModel();
 
         private EFClientRepository _EFClientRepository;
 
-        public EFClientRepository EFClientRepository
+        public virtual EFClientRepository EFClientRepository
         {
             get
             {
