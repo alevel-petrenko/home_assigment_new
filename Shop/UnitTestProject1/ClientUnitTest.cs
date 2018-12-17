@@ -82,7 +82,7 @@ namespace UnitTestProject1
 
             string searchParam = "opop";
             //Act
-            var filteredList = clientService.Serch(searchParam);
+            var filteredList = clientService.Search(searchParam);
 
             //Assert
             Assert.AreEqual(2, filteredList.Count);

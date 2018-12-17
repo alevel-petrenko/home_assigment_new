@@ -23,12 +23,17 @@ namespace BussinesLogic.Service
 
         List<ClientDTO> GetLimited(int number);
 
-        List<ClientDTO> Serch(string name);
+        List<ClientDTO> Search(string name);
     }
 
     public class ClientService : IClientService
     {
         private UnitOfWork _uOW;
+
+        public ClientService()
+        {
+            _uOW = new UnitOfWork();
+        }
 
         public ClientService(UnitOfWork uoW)
         {
@@ -74,7 +79,7 @@ namespace BussinesLogic.Service
             return clients.Select(c => c.to_DTOModel()).Take(number).ToList();
         }
 
-        public List<ClientDTO> Serch(string name)
+        public List<ClientDTO> Search(string name)
         {
             var list = _uOW.EFClientRepository.GetAll();
 
@@ -129,7 +134,7 @@ namespace BussinesLogic.Service
             throw new NotImplementedException();
         }
 
-        public List<ClientDTO> Serch(string name)
+        public List<ClientDTO> Search(string name)
         {
             throw new NotImplementedException();
         }

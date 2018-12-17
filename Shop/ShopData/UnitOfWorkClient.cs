@@ -14,42 +14,38 @@ namespace ShopData
         void Save();
         EFClientRepository EFClientRepository { get; }
         EFTransactionsRepository EFTransactionsRepository { get; }
+        void Dispose();
     }
 
     public class UnitOfWork : IDisposable, IUnitOfWork
     {
-        public UnitOfWork()
-        {
-
-        }
-
         private ShopDataModel context = new ShopDataModel();
 
-        private EFClientRepository _EFClientRepository;
+        private EFClientRepository _eFClientRepository;
 
         public virtual EFClientRepository EFClientRepository
         {
             get
             {
-                if (_EFClientRepository == null)
+                if (_eFClientRepository == null)
                 {
-                    _EFClientRepository = new EFClientRepository(context);
+                    _eFClientRepository = new EFClientRepository(context);
                 }
-                return _EFClientRepository;
+                return _eFClientRepository;
             }
         }
 
-        private EFTransactionsRepository _EFTransactionsRepository;
+        private EFTransactionsRepository _eFTransactionsRepository;
 
         public EFTransactionsRepository EFTransactionsRepository
         {
             get
             {
-                if (_EFTransactionsRepository == null)
+                if (_eFTransactionsRepository == null)
                 {
-                    _EFTransactionsRepository = new EFTransactionsRepository(context);
+                    _eFTransactionsRepository = new EFTransactionsRepository(context);
                 }
-                return _EFTransactionsRepository;
+                return _eFTransactionsRepository;
             }
         }
 

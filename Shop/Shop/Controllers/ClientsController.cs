@@ -20,7 +20,7 @@ namespace Shop.Controllers
 
         public ClientsController()
         {
-
+            _clientService = new ClientService();
         }
 
         public ClientsController(IClientService clientService)
@@ -29,10 +29,9 @@ namespace Shop.Controllers
         }
 
         [HttpGet]
-        
         public IHttpActionResult GetAll ()
         {
-            throw new DivideByZeroException("Oops");
+            //throw new DivideByZeroException("Oops");
 
             var _clientList = _clientService.GetAll().Select(b => b.toViewModel());
             
@@ -40,7 +39,7 @@ namespace Shop.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get (int id)
+        public IHttpActionResult GetDetails (int id)
         {
             var client = _clientService.Get(id).toViewModel();
 

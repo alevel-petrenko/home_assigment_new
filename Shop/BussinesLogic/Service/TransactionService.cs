@@ -24,7 +24,17 @@ namespace BussinesLogic.Service
 
     public class TransactionService : ITransactionService
     {
-        private UnitOfWork _uOW = new UnitOfWork();
+        private UnitOfWork _uOW;
+
+        public TransactionService()
+        {
+            _uOW = new UnitOfWork();
+        }
+
+        public TransactionService(UnitOfWork unitOfWork)
+        {
+            _uOW = unitOfWork;
+        }
 
         public int Add(TransactionDTO transactionDTO)
         {

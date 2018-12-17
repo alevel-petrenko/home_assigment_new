@@ -14,6 +14,17 @@ namespace Shop.Controllers
     {
         private readonly ITransactionService _transactionService = new TransactionService();
 
+        public TransactionsController()
+        {
+            _transactionService = new TransactionService();
+        }
+
+        public TransactionsController(ITransactionService ts)
+        {
+            _transactionService = ts;
+        }
+
+
         [HttpGet]
         public IHttpActionResult GetAll()
         {

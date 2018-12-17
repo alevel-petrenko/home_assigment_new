@@ -14,7 +14,7 @@ namespace ShopData.DTO__BusinessModels_
 
         public DateTime Date { get; set; }
 
-        public Single? Amount { get; set; }
+        public double? Amount { get; set; }
 
         public bool? IsDeleted { get; set; }
     }
