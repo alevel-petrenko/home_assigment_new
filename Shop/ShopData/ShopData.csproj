@@ -59,6 +59,7 @@
     <Compile Include="DataModels\ShopDataModel.cs" />
     <Compile Include="DataModels\Transactions.cs" />
     <Compile Include="DataModels\Transactions_View.cs" />
+    <Compile Include="DataModels\TransactionTypes.cs" />
     <Compile Include="DataModels\UserCategory.cs" />
     <Compile Include="DTO %28BusinessModels%29\UserCategoryDTO.cs" />
     <Compile Include="DTO %28BusinessModels%29\TransactionDTO.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Extensions\ClientConversions.cs" />
     <Compile Include="Extensions\TransactionsConversions.cs" />
     <Compile Include="Models\Client.cs" />
+    <Compile Include="Models\ClientTypes.cs" />
     <Compile Include="Models\UserCategory.cs" />
     <Compile Include="Models\Transactions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

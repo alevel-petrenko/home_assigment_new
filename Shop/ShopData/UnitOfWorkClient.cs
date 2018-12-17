@@ -12,6 +12,7 @@ namespace ShopData
     public interface IUnitOfWork
     {
         void Save();
+
         EFClientRepository EFClientRepository { get; }
         EFTransactionsRepository EFTransactionsRepository { get; }
         EFUserCategoryRepository EFUserCategoryRepository { get; }
