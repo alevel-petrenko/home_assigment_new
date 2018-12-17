@@ -14,6 +14,8 @@ namespace ShopData
         void Save();
         EFClientRepository EFClientRepository { get; }
         EFTransactionsRepository EFTransactionsRepository { get; }
+        EFUserCategoryRepository EFUserCategoryRepository { get; }
+
         void Dispose();
     }
 
@@ -46,6 +48,20 @@ namespace ShopData
                     _eFTransactionsRepository = new EFTransactionsRepository(context);
                 }
                 return _eFTransactionsRepository;
+            }
+        }
+
+        private EFUserCategoryRepository _eFUserCategoryRepository;
+
+        public EFUserCategoryRepository EFUserCategoryRepository
+        {
+            get
+            {
+                if (_eFUserCategoryRepository == null)
+                {
+                    _eFUserCategoryRepository = new EFUserCategoryRepository(context);
+                }
+                return _eFUserCategoryRepository;
             }
         }
 
