@@ -31,8 +31,6 @@ namespace Shop.Controllers
         [HttpGet]
         public IHttpActionResult GetAll ()
         {
-            //throw new DivideByZeroException("Oops");
-
             var _clientList = _clientService.GetAll().Select(b => b.toViewModel());
             
             return Ok(_clientList);
@@ -52,7 +50,7 @@ namespace Shop.Controllers
         [HttpPost]
         public IHttpActionResult Add([FromBody] ClientViewModel model)
         {
-            if (model == null || ModelState.IsValid)
+            if (model == null || !ModelState.IsValid)
                 return BadRequest();
 
             if (_clientService.Validate(model.Name))

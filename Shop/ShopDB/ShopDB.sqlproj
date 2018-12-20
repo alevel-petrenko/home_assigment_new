@@ -74,8 +74,5 @@
     <Build Include="dbo\Stored Procedures\Transactions_Delete.sql" />
     <Build Include="dbo\Views\Transactions_View.sql" />
     <Build Include="dbo\Tables\UserCategory.sql" />
-    <Build Include="Security\user.sql" />
-    <Build Include="Security\tets-user.sql" />
-    <Build Include="Security\RoleMemberships.sql" />
   </ItemGroup>
 </Project>

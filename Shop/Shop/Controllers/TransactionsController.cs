@@ -12,7 +12,7 @@ namespace Shop.Controllers
 {
     public class TransactionsController : ApiController
     {
-        private readonly ITransactionService _transactionService = new TransactionService();
+        private readonly ITransactionService _transactionService;
 
         public TransactionsController()
         {
@@ -23,7 +23,6 @@ namespace Shop.Controllers
         {
             _transactionService = ts;
         }
-
 
         [HttpGet]
         public IHttpActionResult GetAll()

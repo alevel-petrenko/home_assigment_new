@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\UserCategoryConvertion.cs" />
     <Compile Include="Extensions\TransactionConvertion.cs" />
     <Compile Include="Extensions\ClientConvertion.cs" />
     <Compile Include="FactoryMethod\CreditTransactionCreator.cs" />
