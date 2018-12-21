@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopData.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace BussinesLogic.Model
         [Required (ErrorMessage = "Should be not empty")]
         [MaxLength(20, ErrorMessage = "Too long name")]
         public string Name { get; set; }
+
+        public UserCategory UserCategory { get; set; }
     }
 }

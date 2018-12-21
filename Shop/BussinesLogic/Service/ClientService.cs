@@ -22,6 +22,7 @@ namespace BussinesLogic.Service
         ClientDTO Get(int id);
 
         List<ClientDTO> GetLimited(int number);
+        List<ClientDTO> GetByCategory(string category);
 
         List<ClientDTO> Search(string name);
     }
@@ -68,9 +69,21 @@ namespace BussinesLogic.Service
                 .Select(a => a.to_DTOModel()).ToList();
         }
 
+        public List<ClientDTO> GetByCategory(string category)
+        {
+            var clients = _uOW.EFClientRepository.GetAll();
+            var categories = _uOW.EFUserCategoryRepository.GetAll();
+
+            if (categories.FirstOrDefault(c => c.Name == category) != null)
+            {
+                return clients.Select(c => c.to_DTOModel()).Where(c => c.UserCategory.Name == category).ToList();
+            }
+            else
+                throw new Exception("Invalid input for category");
+        }
+
         public List<ClientDTO> GetLimited(int number)
         {
-
             var clients = _uOW.EFClientRepository.GetAll();
 
             if (number > clients.Count)
@@ -127,6 +140,11 @@ namespace BussinesLogic.Service
                     Name = "LuckyOne Mocked"
                 }
             };
+        }
+
+        public List<ClientDTO> GetByCategory(string category)
+        {
+            throw new NotImplementedException();
         }
 
         public List<ClientDTO> GetLimited(int number)

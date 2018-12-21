@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopData.DataModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,6 @@ namespace ShopData.DTO__BusinessModels_
         public int Id { get; set; }
         public string Name { get; set; }
         public bool? IsDeleted { get; set; }
+        public UserCategory UserCategory { get; set; }
     }
 }

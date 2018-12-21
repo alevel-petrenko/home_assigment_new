@@ -92,5 +92,14 @@ namespace Shop.Controllers
 
             return Ok(clients);
         }
+
+        [Route("by-category/{category}")]
+        [HttpGet]
+        public IHttpActionResult GetByCategory(string category)
+        {
+            var clients = _clientService.GetByCategory(category).Select(a => a.toViewModel());
+
+            return Ok(clients);
+        }
     }
 }
