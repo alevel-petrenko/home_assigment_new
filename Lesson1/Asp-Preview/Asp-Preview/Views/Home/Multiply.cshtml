@@ -1,0 +1,25 @@
+﻿@model Asp_Preview.Models.SummModel
+@{
+    ViewBag.Title = "Multiply";
+}
+
+<h2>Multiply_myAction</h2>
+
+@using (Html.BeginForm("Multiply", "Home"))
+{
+    <table>
+        <tr>
+            <td>First:</td>
+            <td>@Html.TextBoxFor(x => x.First)</td>
+        </tr>
+        <tr>
+            <td>Second:</td>
+            <td>@Html.TextBoxFor(x => x.Second)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Calculate" />
+    <input type="reset" value="Clear" />
+}
+<hr />
+
+@Html.TextBoxFor(x => x.Result)

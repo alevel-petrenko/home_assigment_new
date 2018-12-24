@@ -1,0 +1,40 @@
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Index
+    </title>
+</head>
+<body>
+    <h3>Items of Internet market</h3>
+    <br/>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Producer</td>
+                <td>Price</td>
+                <td>&nbsp;</td>
+            </tr>
+        </thead>
+        <tbody>
+            @{ 
+                foreach (var phone in ViewBag.Phones)
+                {
+            <tr>
+                <td>@phone.Name</td>
+                <td>@phone.Producer</td>
+                <td>@phone.Price</td>
+                <td><a href="/Home/Buy/@phone.Id"> Buy!</a></td>
+            </tr>
+                }
+            }
+        </tbody>
+    </table>
+</body>
+</html>

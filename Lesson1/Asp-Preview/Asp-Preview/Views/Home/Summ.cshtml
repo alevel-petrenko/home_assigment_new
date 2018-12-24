@@ -1,0 +1,26 @@
+﻿@model Asp_Preview.Models.SummModel
+@{
+    ViewBag.Title = "Summ";
+}
+
+<h2>Summ</h2>
+
+@using (Html.BeginForm("Summ", "Home"))
+{
+    <table>
+        <tr>
+            <td>First:</td>
+            <td>@Html.TextBoxFor(x => x.First)</td>
+        </tr>
+        <tr>
+            <td>Second:</td>
+            <td>@Html.TextBoxFor(x => x.Second)</td>
+        </tr>
+    </table>
+    <input type="submit" value="Calculate" />
+    <input type="reset" value="Clear" />
+}
+<hr />
+
+@Html.TextBoxFor(x => x.Result)
+

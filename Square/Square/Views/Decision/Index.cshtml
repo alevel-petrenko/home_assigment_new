@@ -1,0 +1,45 @@
+﻿@model Square_Logic.Models.Inputs
+@{
+    ViewBag.Title = "Calculate equation";
+}
+
+<h2>Сalculate the solutions of the quadratic equation </h2>
+<br />
+@using (Html.BeginForm("Index", "Decision"))
+{
+    <input type="text" name="A" />
+    <tr>X</tr> <sup>2 </sup>
+    <tr>+</tr>
+    <input type="text" name="B" />
+    <tr>X +</tr>
+    <input type="text" name="C" />
+    <tr> = 0</tr>
+    <br />
+    <br />
+    <input type="submit" value="Calculate" />
+}
+<br />
+<br />
+
+<table>
+    <tr>
+        <td>
+            <h3>Correct answers are:</h3>
+            @if (Model != null && Model.X != null)
+            {
+                if (Model.X.Count == 0)
+                {
+                    @Model.X.Count
+                }
+                else
+                {
+                    foreach (var x in Model.X)
+                    {
+
+                        <p>@x</p>
+                    }
+                }
+            }
+        </td>
+    </tr>
+</table>
